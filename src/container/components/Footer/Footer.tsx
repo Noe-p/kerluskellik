@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next';
 import React from 'react';
 import { SocialIcon } from 'react-social-icons';
 import tw from 'tailwind-styled-components';
+import { NAVBAR_LINKS } from '../Navbar';
 
 interface FooterProps {
   className?: string;
@@ -13,7 +14,7 @@ export function Footer(props: FooterProps): React.JSX.Element {
   const { t } = useTranslation();
 
   return (
-    <Main className={className}>
+    <Main id={NAVBAR_LINKS.CONTACT} className={className}>
       <InfosContainer>
         <LinkStyled href='mailto:noephilippe29@gmail.com' target='_blank'>
           {t('noephilippe29@gmail.com')}

@@ -7,6 +7,21 @@
 @import url('../../../public/fonts/OpenSans/stylesheet.css');
 @import url('../../../public/fonts/Monda/stylesheet.css');
 
+@font-face {
+  font-family: 'Great Vibes';
+  src: url('../../../public/fonts/great-vibes/GreatVibes-Regular.otf');
+}
+
+@font-face {
+  font-family: 'Lobster';
+  src: url('../../../public/fonts/lobster/Lobster.otf');
+}
+
+@font-face {
+  font-family: 'Sanchez';
+  src: url('../../../public/fonts/Sanchez/Sanchez-Regular.ttf');
+}
+
 html,
 body {
   /* overscroll-behavior: none; */
@@ -35,4 +50,36 @@ body {
 .scrollbar-white::-webkit-scrollbar-thumb {
   background-color: white;
   border-radius: 5em;
+}
+
+.bateau {
+  position: relative;
+  top: -17.5vw;
+  left: 50vw;
+  width: 5vw;
+  transform: rotate(90deg);
+  animation-name: bateau;
+  animation-duration: 8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bateau {
+  0% {
+    top: -17.5;
+    left: 50vw;
+    transform: rotate(0deg);
+  }
+
+  65% {
+    transform: rotate(30deg);
+    top: -13vw;
+    left: 8vw;
+  }
+
+  90% {
+    transform: rotate(90deg);
+    top: -17.5vw;
+    left: 8vw;
+  }
 }

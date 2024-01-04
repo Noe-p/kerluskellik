@@ -58,6 +58,15 @@ export function P24(props: TextsProps): React.JSX.Element {
   );
 }
 
+export function P16(props: TextsProps): React.JSX.Element {
+  const { children, className, ...textProps } = props;
+  return (
+    <P16Styled className={className} {...textProps}>
+      {children}
+    </P16Styled>
+  );
+}
+
 export function P18(props: TextsProps): React.JSX.Element {
   const { children, className, ...textProps } = props;
   return (
@@ -104,48 +113,72 @@ export function Link(props: LinksProps): React.JSX.Element {
 }
 
 const H1Styled = tw.h1`
+  text-primary
   text-2xl
   font-mono
   uppercase
 `;
 
 const H2Styled = tw.h2`
-  text-xl
+  text-primary
+  text-2xl
+  font-title
 `;
 
 const H3Styled = tw.h3`
+  text-primary
   text-lg
+  font-sanchez
 `;
 
 const H4Styled = tw.h4`
+  text-primary
   text-[24px]
-  font-mono
+  font-sanchez
 `;
 
 const P24Styled = tw.p`
+  text-primary
   text-[24px]
-  font-mono
+  font-sanchez
+
 `;
 
 const P18Styled = tw.p`
+  text-primary
   text-base
+  font-sanchez
+`;
+
+const P16Styled = tw.p`
+  text-primary
+  text-[16px]
+  font-sanchez
 `;
 
 const P14Styled = tw.p`
+  text-primary
   text-sm
+  font-sanchez
 `;
 
 const P12Styled = tw.p`
+  text-primary
   text-xs
+  font-sanchez
 `;
 
 const P10Styled = tw.p`
+  text-primary
   text-2xs
+  font-sanchez
 `;
 
 const LinkStyled = tw.a`
+  text-primary
   text-primary-700
   size-p2
   cursor-pointer
   font-semibold
+  font-sanchez
 `;

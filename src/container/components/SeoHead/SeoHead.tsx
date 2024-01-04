@@ -17,6 +17,7 @@ export function SeoHead(props: SeoHeadProps): React.JSX.Element {
   const domain = `${process.env.NEXT_PUBLIC_APP_URL}`;
   const url = `${domain}/${canonicalUrl === '/' ? '' : canonicalUrl}`;
   const image = `${process.env.NEXT_PUBLIC_APP_URL}/og.png`;
+  const keywords = `${process.env.NEXT_PUBLIC_DEFAULT_META_KEYWORDS}`;
 
   return (
     <Head>
@@ -35,6 +36,9 @@ export function SeoHead(props: SeoHeadProps): React.JSX.Element {
       <meta name='twitter:title' content={title} />
       <meta name='twitter:description' content={description} />
       <meta name='twitter:image' content={image} />
+      <meta name='keywords' content={keywords} />
+      <meta name='robots' content='index, follow' />
+      <link rel='canonical' href={url} />
     </Head>
   );
 }

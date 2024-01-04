@@ -147,13 +147,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        white: '#FFFFFF',
-        gradientLightTop: '#DCE6F7',
-        blue: {
-          50: '#DDE7F7',
-          100: '#C2DCFC',
-          200: '#8BBBF7',
-        },
+        white: '#fbf8ef',
         green: {
           50: '#EBFFE5',
           100: '#DFFFD6',
@@ -174,18 +168,21 @@ module.exports = {
           900: '#141626',
         },
         primary: {
-          25: '#F7F6FE',
-          50: '#E2DFFC',
-          100: '#CDC7FA',
-          200: '#B8AFF8',
-          300: '#A397F5',
-          400: '#8E80F3',
-          500: '#7A68F1',
-          600: '#6550EF',
-          700: '#4F38EC',
-          800: '#3F389F',
-          900: '#30367E',
+          DEFAULT: '#0d1637',
+          50: '#ebf7ff',
+          100: '#dbeeff',
+          200: '#bedfff',
+          300: '#97c8ff',
+          400: '#6ea5ff',
+          500: '#4d82ff',
+          600: '#2d5bfe',
+          700: '#2147e1',
+          800: '#1e3fb5',
+          900: '#213b8e',
+          950: '#0d1637',
         },
+
+        secondary: '#EBA500',
         error: {
           25: '#FDDEDF',
           50: '#FCCBCD',
@@ -230,6 +227,9 @@ module.exports = {
         sans: ['OpenSans', 'Inter', 'Poppins', 'sans-serif'],
         mono: ['Monda', 'Roboto Mono', 'monospace'],
         inter: ['Inter'],
+        text: ['Great Vibes'],
+        title: ['Lobster'],
+        sanchez: ['Sanchez'],
       },
       minWidth: { ...sizesList },
       minHeight: { ...sizesList },

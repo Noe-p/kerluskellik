@@ -1,16 +1,67 @@
 {
   "langage": "fr",
   "home": {
-    "name": "home",
-    "subTitle": "C'est la page d'accueil",
-    "title": "Bienvenu sur le starter-template ! 👋",
-    "link": "A propos"
+    "name": "Kerluskellik",
+    "subTitle": "“Une maison de caractère”"
   },
-  "about": {
-    "name": "À propos",
-    "title": "A propos",
-    "subtitle": "C'est la page à propos",
-    "link": "Retour à l'accueil"
+  "description": {
+    "title": "Description",
+    "content": "Située face à la mer, cette magnifique maison de caractère, exposée Sud est une maison authentique de capitaine au long cours. Elle se situe à l’île de Batz, vue sur mer de toutes les pièces. Entourée d'un jardin clos, elle est située à 50 m de la plage et à 5 min du débarcadère.<br/><br/>Tout y est propice au repos, lecture devant un bon feu de cheminée, jeux des enfants dans le jardin ou sur la plage en toute tranquillité, ballade sur la côte sauvage, nombreux jeux de société."
+  },
+  "agencement": {
+    "title": "Agencement",
+    "items": {
+      "item1": {
+        "title": "Rez-de-chaussée",
+        "content": "Grand salon. Cuisine tout équipée (lave-vaisselle, micro-ondes, four, cafetière, bouilloire, grille-pain, machine expresso, machine à pain). Cellier (lave-linge, sèche-linge). Salle de bain"
+      },
+      "item2": {
+        "title": "Etage 1",
+        "list": {
+          "item1": "1 chambre avec 1 lit double (140cm)",
+          "item2": "1 chambre avec 1 lit double (120cm) + balcon",
+          "item3": "1 chambre avec 1 lit double (140cm) + 2 lits simples (80cm)",
+          "item4": "1 salle de bain avec 1 WC"
+        }
+      },
+      "item3": {
+        "title": "Etage 2",
+        "list": {
+          "item1": "1 chambre avec 1 lit double (140cm)",
+          "item2": "Lavabo"
+        }
+      },
+      "item4": {
+        "title": "Informations",
+        "list": {
+          "item1": "<b>Capacité d'accueil :</b> 9 personnes",
+          "item2": "<b>Nombres de chambres :</b> 4"
+        }
+      }
+    }
+  },
+  "equipements": {
+    "title": "Équipements",
+    "list": {
+      "item1": "Location de linge de toilette",
+      "item2": "Chauffage",
+      "item3": "Cheminée/poêle",
+      "item4": "Lave-linge privatif",
+      "item5": "Sèche-linge privatif",
+      "item6": "Lave-vaisselle",
+      "item7": "Micro-ondes",
+      "item8": "Télévision",
+      "item9": "Jeux de plages",
+      "item10": "Barbecue",
+      "item11": "Salon de jardin",
+      "item12": "Transats",
+      "item13": "Jeux de société",
+      "item14": "Lit bébé"
+    }
+  },
+  "carte": {
+    "title": "Île-de-Batz",
+    "address": "Pors Alliou<br/> 29253 Île-de-Batz"
   },
   "generics": {
     "copyright": "Copyright © 2023 - Starter-template - Tous droits réservés",
@@ -18,5 +69,28 @@
   },
   "common": {
     "loading": "Loading..."
+  },
+  "enums": {
+    "navbar": {
+      "HOME": "Kerluskellik",
+      "DESCRIPTION": "Description",
+      "AGENCEMENT": "Agencement",
+      "EQUIPEMENTS": "Equipements",
+      "PHOTOS": "Photos",
+      "TARIFS": "Tarifs",
+      "CARTE": "Carte",
+      "CONTACT": "Contact"
+    },
+    "filters": {
+      "ALL": "Tous",
+      "JARDIN": "Jardin",
+      "RDC": "Rez-de-chaussée",
+      "ETAGE1": "Etage 1",
+      "ETAGE2": "Etage 2",
+      "CHAMBRE1": "Chambre 1",
+      "CHAMBRE2": "Chambre 2",
+      "CHAMBRE3": "Chambre 3",
+      "CHAMBRE4": "Chambre 4"
+    }
   }
 }

@@ -1,7 +1,10 @@
-import { H1, Image, P18 } from '@/components';
+import { H1, P18 } from '@/components';
+import { scrollTo } from '@/services/utils';
+import { ChevronDoubleDownIcon } from '@heroicons/react/24/solid';
 import { useTranslation } from 'next-i18next';
 import React, { useEffect, useState } from 'react';
 import tw from 'tailwind-styled-components';
+import { NAVBAR_LINKS } from '../Navbar';
 
 interface HeaderProps {
   className?: string;
@@ -19,13 +22,14 @@ export function Header(props: HeaderProps): React.JSX.Element {
   }, []);
 
   return (
-    <Main className={className}>
+    <Main id={NAVBAR_LINKS.HOME} className={className}>
       <Filter />
-      <ImageBackground>
-        <Image src='/images/header.jpg' alt='header' />
-      </ImageBackground>
+      <VideoBackground autoPlay loop muted playsInline>
+        <source src='/videos/header.mp4' type='video/mp4' />
+      </VideoBackground>
       <Title $isAnimated={isAnimated}>{t('home.name')}</Title>
       <SubTitle $isAnimated={isAnimated}>{t('home.subTitle')}</SubTitle>
+      <SlideButton onClick={() => scrollTo(NAVBAR_LINKS.DESCRIPTION)} />
     </Main>
   );
 }
@@ -52,7 +56,7 @@ const Filter = tw.div`
   z-10
 `;
 
-const ImageBackground = tw.div`
+const VideoBackground = tw.video`
   absolute
   top-0
   left-0
@@ -61,13 +65,15 @@ const ImageBackground = tw.div`
   w-full
   h-full
   z-0
+  object-cover
+  object-center
+  
 `;
 
 const Title = tw(H1)<{ $isAnimated: boolean }>`
   text-white
-  text-4xl
-  lg:text-6xl
-  font-bold
+  text-6xl
+  lg:text-8xl
   text-center
   transform
   transition-all
@@ -78,13 +84,15 @@ const Title = tw(H1)<{ $isAnimated: boolean }>`
   ${(props) => (props.$isAnimated ? 'opacity-100' : 'opacity-0')}
   line-height-1
   z-20
+  font-title
+  normal-case
 `;
 
 const SubTitle = tw(P18)<{ $isAnimated: boolean }>`
   text-white
-  text-2xl
-  lg:text-4xl
-  font-bold
+  text-xl
+  lg:text-5xl
+  mt-5
   text-center
   transform
   transition-all
@@ -95,5 +103,22 @@ const SubTitle = tw(P18)<{ $isAnimated: boolean }>`
   ${(props) => (props.$isAnimated ? 'opacity-100' : 'opacity-0')}
   line-height-1
   z-20
+  font-text
+`;
 
+const SlideButton = tw(ChevronDoubleDownIcon)`
+  text-white
+  animate-bounce
+  z-20
+  cursor-pointer
+  transition-all
+  duration-1500
+  ease-in-out
+  absolute
+  bottom-10
+  left-1/2
+  transform
+  -translate-x-1/2
+  w-10
+  h-10
 `;
