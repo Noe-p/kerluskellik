@@ -1,0 +1,22 @@
+{
+  "langage": "fr",
+  "home": {
+    "name": "home",
+    "subTitle": "C'est la page d'accueil",
+    "title": "Bienvenu sur le starter-template ! 👋",
+    "link": "A propos"
+  },
+  "about": {
+    "name": "À propos",
+    "title": "A propos",
+    "subtitle": "C'est la page à propos",
+    "link": "Retour à l'accueil"
+  },
+  "generics": {
+    "copyright": "Copyright © 2023 - Starter-template - Tous droits réservés",
+    "designed": "Conçu et développé par "
+  },
+  "common": {
+    "loading": "Loading..."
+  }
+}

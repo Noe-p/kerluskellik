@@ -1,0 +1,22 @@
+{
+  "langage": "en",
+  "home": {
+    "name": "home",
+    "subTitle": "This is the home page",
+    "title": "Welcome to the starter-template! 👋",
+    "link": "About"
+  },
+  "about": {
+    "name": "About",
+    "title": "About",
+    "subtitle": "This is the about page",
+    "link": "Back to Home"
+  },
+  "generics": {
+    "copyright": "Copyright © 2023 - Starter-template - All rights reserved",
+    "designed": "Designed and developed by "
+  },
+  "common": {
+    "loading": "Loading..."
+  }
+}
