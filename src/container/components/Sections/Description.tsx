@@ -13,7 +13,7 @@ export function Description(): JSX.Element {
           <Trans i18nKey='description.content' />
         </P16>
       </TextContainer>
-      <Image src='/images/maison.jpg' alt='description' />
+      <Image src='/images/maison.webP' alt='description' />
     </Main>
   );
 }
