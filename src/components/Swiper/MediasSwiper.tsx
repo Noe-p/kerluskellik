@@ -125,8 +125,8 @@ const ImageStyled = styled.div`
 
 const CloseIconContainer = styled.div<{ $hide: boolean }>`
   position: absolute;
-  top: 50px;
-  right: 70px;
+  top: 7%;
+  right: 5%;
   cursor: pointer;
   z-index: 100;
   border-radius: 50%;
@@ -138,16 +138,15 @@ const CloseIconContainer = styled.div<{ $hide: boolean }>`
   align-items: center;
   transition: opacity 0.3s ease-in-out;
   opacity: ${({ $hide }) => ($hide ? 0 : 0.5)};
+  border: solid 1px black;
 
   :hover {
     opacity: 1;
   }
 
   @media (max-width: 768px) {
-    top: 100px;
-    width: 35px;
-    height: 35px;
-    right: 50px;
+    top: 10%;
+    right: 15%;
     opacity: ${({ $hide }) => ($hide ? 0 : 1)};
   }
 `;
