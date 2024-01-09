@@ -1,4 +1,4 @@
-import { P14, P16 } from '@/components/Texts';
+import { P14, P24 } from '@/components/Texts';
 import { scrollTo } from '@/services/utils';
 import { ToggleMenuButton } from '@noe-p/react-buttons-components';
 import { useTranslation } from 'next-i18next';
@@ -207,10 +207,12 @@ const Menu = tw.div<{ $isOpen: boolean }>`
   z-50
 `;
 
-const MenuLink = tw(P16)<{ $selected?: boolean }>`
+const MenuLink = tw(P24)<{ $selected?: boolean }>`
   uppercase
   ${(props) => (props.$selected ? 'text-black' : 'text-gray-300')}
   m-4
   cursor-pointer
   text-center
+  -translate-y-10
+
 `;

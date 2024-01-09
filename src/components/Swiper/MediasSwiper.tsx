@@ -177,10 +177,7 @@ const ArrowLeftIconStyled = styled(ChevronLeftIcon)<{ $hide: boolean }>`
   }
 
   @media (max-width: 768px) {
-    left: 30px;
-    width: 30px;
-    padding: 5px;
-    opacity: ${({ $hide }) => ($hide ? 0 : 1)};
+    display: none;
   }
 `;
 
@@ -203,10 +200,7 @@ const ArrowRightIconStyled = styled(ChevronRightIcon)<{ $hide: boolean }>`
   }
 
   @media (max-width: 768px) {
-    right: 30px;
-    width: 30px;
-    padding: 5px;
-    opacity: ${({ $hide }) => ($hide ? 0 : 1)};
+    display: none;
   }
 `;
 
@@ -246,6 +240,5 @@ const PaginationButton = styled.button<{ $active: boolean }>`
   border-radius: 2px;
 
   @media (max-width: 768px) {
-    display: none;
   }
 `;

@@ -20,7 +20,7 @@ export function Description(): JSX.Element {
 
 const Main = tw(Grid2)`
   md:gap-15
-  py-20
+  md:py-20
   justify-center
   items-center
   px-5 md:px-10
