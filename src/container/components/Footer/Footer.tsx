@@ -1,7 +1,6 @@
-import { Link, P14 } from '@/components/Texts';
-import { useTranslation } from 'next-i18next';
+import { H2, Link, P14, P16 } from '@/components/Texts';
+import { Trans, useTranslation } from 'next-i18next';
 import React from 'react';
-import { SocialIcon } from 'react-social-icons';
 import tw from 'tailwind-styled-components';
 import { NAVBAR_LINKS } from '../Navbar';
 
@@ -16,25 +15,31 @@ export function Footer(props: FooterProps): React.JSX.Element {
   return (
     <Main id={NAVBAR_LINKS.CONTACT} className={className}>
       <InfosContainer>
-        <LinkStyled href='mailto:noephilippe29@gmail.com' target='_blank'>
-          {t('noephilippe29@gmail.com')}
+        <Title>{t('contact.title')}</Title>
+        <P16 className='mb-5 text-white'>{t('contact.name')}</P16>
+        <P16 className='mb-5 text-white'>
+          <Trans
+            i18nKey='contact.address'
+            components={{
+              br: <br />,
+            }}
+          />
+        </P16>
+        <LinkStyled href='tel:0298823367' target='_blank'>
+          {t('02 98 82 33 67')}
         </LinkStyled>
-        <LinkStyled href='tel:0781533181' target='_blank'>
-          {t('07 81 53 31 81')}
+        <LinkStyled className='mb-5' href='tel:0642720837' target='_blank'>
+          {t('06 42 72 08 37')}
         </LinkStyled>
+
         <LinkStyled
-          href='https://maps.google.com/maps?q=172+avenue+winston+churchill+rennes'
+          className='mb-10'
+          href='mailto:pierreclairephilippe@gmail.com'
           target='_blank'
         >
-          {t('16 avenue des Lilas - 35000 Rennes')}
+          {t('pierreclairephilippe@gmail.com')}
         </LinkStyled>
       </InfosContainer>
-      <SocialMediasContainer>
-        <SocialLogo network='facebook' />
-        <SocialLogo network='instagram' />
-        <SocialLogo network='twitter' />
-        <SocialLogo network='linkedin' />
-      </SocialMediasContainer>
       <CopyRight>
         {t('generics.designed')}
         <LinkStyled href='https://noe-philippe.com' target='_blank'>
@@ -49,34 +54,22 @@ export function Footer(props: FooterProps): React.JSX.Element {
 const Main = tw.div`
   flex
   items-center
-  bg-gray-100
+  bg-primary
   w-full
   flex-col
 `;
 
-const SocialMediasContainer = tw.div`
-  flex
-  p-4
-`;
-
-const SocialLogo = tw(SocialIcon)`
-  w-5
-  h-5
-  mx-2
-  hover:scale-105
-  transition
-  duration-100
-  ease-in-out
-  opacity-90
-  hover:opacity-100
-  cursor-pointer
+const Title = tw(H2)`
+  text-center
+  text-white
+  mb-10
 `;
 
 const CopyRight = tw(P14)`
   text-center
-  text-gray-500
   w-3/4
   mb-4
+  text-white
 `;
 
 const InfosContainer = tw.div`
@@ -89,5 +82,6 @@ const InfosContainer = tw.div`
 `;
 
 const LinkStyled = tw(Link)`
-  text-gray-500
+  text-white
+  hover:text-secondary
 `;

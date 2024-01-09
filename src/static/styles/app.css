@@ -51,10 +51,9 @@ body {
   background-color: white;
   border-radius: 5em;
 }
-
 .bateau {
   position: relative;
-  top: -17.5vw;
+  top: 0vw;
   left: 50vw;
   width: 5vw;
   transform: rotate(90deg);
@@ -66,7 +65,7 @@ body {
 
 @keyframes bateau {
   0% {
-    top: -17.5;
+    top: 0vw;
     left: 50vw;
     transform: rotate(0deg);
   }
@@ -77,7 +76,8 @@ body {
     left: 8vw;
   }
 
-  90% {
+  100% {
+    /* Modification ici */
     transform: rotate(90deg);
     top: -17.5vw;
     left: 8vw;

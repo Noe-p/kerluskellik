@@ -56,15 +56,40 @@
       "item11": "Salon de jardin",
       "item12": "Transats",
       "item13": "Jeux de société",
-      "item14": "Lit bébé"
+      "item14": "Lit bébé",
+      "item15": "Chaise haute bébé",
+      "item16": "Vélos"
     }
+  },
+  "photos": {
+    "title": "Les photos"
   },
   "carte": {
     "title": "Île-de-Batz",
     "address": "Pors Alliou<br/> 29253 Île-de-Batz"
   },
+  "tarifs": {
+    "left": {
+      "title": "Tarifs",
+      "summer": "<b>Semaine Juillet/Aout :</b> à partir de 1200,00€ (TTC)",
+      "beforeSummer": "<b>Semaine Juin/Septembre + Vacances scolaires :</b> à partir de 900,00€ (TTC)",
+      "winter": "<b>Semaine Hors Saison (Autres périodes) :</b> à partir de 800,00€ (TTC)"
+    },
+    "right": {
+      "title": "Informations",
+      "start": "<b>Horaire d'arrivée :</b> 17h00",
+      "end": "<b>Horaire de départ :</b> 11h00"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Pierre et Claire PHILIPPE",
+    "address": "16 rue Jean Moulin,<br/> 29120 Pont l'Abbé",
+    "phone": "02 98 82 33 67</br>06 42 72 08 37",
+    "email": "pierreclairephilippe@gmail.com"
+  },
   "generics": {
-    "copyright": "Copyright © 2023 - Starter-template - Tous droits réservés",
+    "copyright": "Copyright © 2024 - Kerluskellik - Tous droits réservés",
     "designed": "Conçu et développé par "
   },
   "common": {

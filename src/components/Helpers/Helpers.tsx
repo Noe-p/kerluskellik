@@ -12,6 +12,14 @@ export const Grid3 = tw.div`
   grid md:grid-cols-3 grid-cols-1 gap-y-5 md:gap-5 w-full
 `;
 
+export const Grid4 = tw.div`
+  grid md:grid-cols-4 grid-cols-1 gap-y-5 md:gap-5 w-full
+`;
+
+export const Grid5 = tw.div`
+  grid md:grid-cols-5 grid-cols-1 gap-y-5 md:gap-5 w-full
+`;
+
 export const GridCol1 = tw.div`
   col-span-1
 `;

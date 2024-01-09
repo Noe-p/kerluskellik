@@ -1,6 +1,6 @@
 import tw from 'tailwind-styled-components';
 import { NAVBAR_LINKS } from '../Navbar';
-import { ColCenter, Grid2, H2, P18, Row } from '@/components';
+import { Col, ColCenter, Grid4, H2, P18, Row } from '@/components';
 import { useTranslation } from 'next-i18next';
 import { CheckIcon } from '@heroicons/react/24/solid';
 
@@ -11,7 +11,7 @@ export function Equipements(): JSX.Element {
     <Main id={NAVBAR_LINKS.EQUIPEMENTS}>
       <H2>{t('equipements.title')}</H2>
       <TextContainer>
-        <Left>
+        <ColItem>
           <ListItem>
             <CheckIcon className='w-5 h-5 text-primary' />
             <Label>{t('equipements.list.item1')}</Label>
@@ -28,6 +28,8 @@ export function Equipements(): JSX.Element {
             <CheckIcon className='w-5 h-5 text-primary' />
             <Label>{t('equipements.list.item4')}</Label>
           </ListItem>
+        </ColItem>
+        <ColItem>
           <ListItem>
             <CheckIcon className='w-5 h-5 text-primary' />
             <Label>{t('equipements.list.item5')}</Label>
@@ -40,12 +42,13 @@ export function Equipements(): JSX.Element {
             <CheckIcon className='w-5 h-5 text-primary' />
             <Label>{t('equipements.list.item7')}</Label>
           </ListItem>
-        </Left>
-        <Right>
+
           <ListItem>
             <CheckIcon className='w-5 h-5 text-primary' />
             <Label>{t('equipements.list.item8')}</Label>
           </ListItem>
+        </ColItem>
+        <ColItem>
           <ListItem>
             <CheckIcon className='w-5 h-5 text-primary' />
             <Label>{t('equipements.list.item9')}</Label>
@@ -62,6 +65,8 @@ export function Equipements(): JSX.Element {
             <CheckIcon className='w-5 h-5 text-primary' />
             <Label>{t('equipements.list.item12')}</Label>
           </ListItem>
+        </ColItem>
+        <ColItem>
           <ListItem>
             <CheckIcon className='w-5 h-5 text-primary' />
             <Label>{t('equipements.list.item13')}</Label>
@@ -70,7 +75,15 @@ export function Equipements(): JSX.Element {
             <CheckIcon className='w-5 h-5 text-primary' />
             <Label>{t('equipements.list.item14')}</Label>
           </ListItem>
-        </Right>
+          <ListItem>
+            <CheckIcon className='w-5 h-5 text-primary' />
+            <Label>{t('equipements.list.item15')}</Label>
+          </ListItem>
+          <ListItem>
+            <CheckIcon className='w-5 h-5 text-primary' />
+            <Label>{t('equipements.list.item16')}</Label>
+          </ListItem>
+        </ColItem>
       </TextContainer>
     </Main>
   );
@@ -83,9 +96,9 @@ const Main = tw(ColCenter)`
   justify-center
 `;
 
-const TextContainer = tw(Grid2)`
+const TextContainer = tw(Grid4)`
   h-full
-  w-full md:w-1/2
+  w-full 
   border
   border-primary
   p-10
@@ -94,21 +107,9 @@ const TextContainer = tw(Grid2)`
   mt-10
 `;
 
-const Left = tw.div`
-  flex
-  flex-col
-  items-start
+const ColItem = tw(Col)`
   justify-between
   h-full
-  gap-2
-`;
-
-const Right = tw.div`
-  flex
-  flex-col
-  items-start
-  justify-center
-  w-full
   gap-2
 `;
 

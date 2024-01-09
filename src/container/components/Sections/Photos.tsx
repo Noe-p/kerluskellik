@@ -1,6 +1,14 @@
 import tw from 'tailwind-styled-components';
 import { NAVBAR_LINKS } from '../Navbar';
-import { ColCenter, Grid3, MediasSwiper, P18, Row, Image } from '@/components';
+import {
+  ColCenter,
+  Grid3,
+  MediasSwiper,
+  P18,
+  Row,
+  Image,
+  H2,
+} from '@/components';
 import { FILTERS, JARDIN, PHOTOS } from '@/static/photos';
 import { useTranslation } from 'next-i18next';
 import { useEffect, useState } from 'react';
@@ -24,6 +32,7 @@ export function Photos(props: PhotosProps): JSX.Element {
 
   return (
     <Main id={NAVBAR_LINKS.PHOTOS}>
+      <H2 className='mb-5'>{t('photos.title')}</H2>
       <FilterContainer>
         {Object.values(FILTERS).map((filter) => (
           <Filter

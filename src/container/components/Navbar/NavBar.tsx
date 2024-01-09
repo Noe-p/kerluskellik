@@ -1,4 +1,4 @@
-import { H2, P18 } from '@/components/Texts';
+import { H2, P14 } from '@/components/Texts';
 import { scrollTo } from '@/services/utils';
 import { ToggleMenuButton } from '@noe-p/react-buttons-components';
 import { useTranslation } from 'next-i18next';
@@ -77,7 +77,10 @@ export function NavBar(props: NavBarProps): React.JSX.Element {
       <Content>
         <Left>
           <LogoContainer onClick={() => scrollTo(NAVBAR_LINKS.HOME)}>
-            <TextNavigation $selected={selectedLink === NAVBAR_LINKS.HOME}>
+            <TextNavigation
+              className='text-base'
+              $selected={selectedLink === NAVBAR_LINKS.HOME}
+            >
               {t(`enums.navbar.${NAVBAR_LINKS.HOME}`)}
             </TextNavigation>
           </LogoContainer>
@@ -172,7 +175,7 @@ const LogoContainer = tw.div`
   cursor-pointer
 `;
 
-const TextNavigation = tw(P18)<{ $selected?: boolean }>`
+const TextNavigation = tw(P14)<{ $selected?: boolean }>`
   uppercase
   ${(props) => (props.$selected ? 'opacity-100' : 'opacity-50')}
   hover:text-black

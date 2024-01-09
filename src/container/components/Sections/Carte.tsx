@@ -13,7 +13,7 @@ export function Carte(): JSX.Element {
       <P18 className='mt-5 text-center text-white'>
         <Trans i18nKey='carte.address' components={{ br: <br /> }} />
       </P18>
-      <Image className='bateau' src='/images/bateau.png' alt='bateau' />
+      <img className='bateau' src='/images/bateau.png' alt='bateau' />
     </Main>
   );
 }
