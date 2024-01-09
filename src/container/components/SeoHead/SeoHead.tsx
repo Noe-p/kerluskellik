@@ -1,23 +1,21 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import React from 'react';
 
-interface SeoHeadProps {
-  title?: string;
-  description?: string;
-}
-
-export function SeoHead(props: SeoHeadProps): React.JSX.Element {
+export function SeoHead(): React.JSX.Element {
   const { asPath } = useRouter();
 
   const canonicalUrl = asPath.split('?')[0];
 
-  const title = props.title ?? process.env.NEXT_PUBLIC_DEFAULT_META_TITLE;
+  const title =
+    "Location de vacances à Kerluskellik : Charmante maison avec vue sur mer sur l'île de Batz";
   const description =
-    props.description ?? process.env.NEXT_PUBLIC_DEFAULT_META_DESCRIPTION;
+    "Découvrez le charme authentique de Kerluskellik, une maison à louer sur l'île de Batz. Profitez d'une expérience unique avec cette propriété typique offrant une vue imprenable sur la mer. Réservez votre séjour dès maintenant et plongez dans l'atmosphère paisible de cette île bretonne, entre tradition et paysages enchanteurs.";
   const domain = `${process.env.NEXT_PUBLIC_APP_URL}`;
   const url = `${domain}/${canonicalUrl === '/' ? '' : canonicalUrl}`;
   const image = `${process.env.NEXT_PUBLIC_APP_URL}/og.png`;
-  const keywords = `${process.env.NEXT_PUBLIC_DEFAULT_META_KEYWORDS}`;
+  const keywords =
+    'location, vacances, maison, vue, mer, île, Batz, Kerluskellik, Bretagne, Finistère, France, authenticité, charme, typique, tradition, paysage, enchanteur, séjour, expérience, unique, atmosphère, paisible, île, bretonne, tradition, paysages, enchanteurs';
 
   return (
     <Head>
