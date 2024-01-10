@@ -137,7 +137,7 @@ const CloseIconContainer = styled.div<{ $hide: boolean }>`
   justify-content: center;
   align-items: center;
   transition: opacity 0.3s ease-in-out;
-  opacity: ${({ $hide }) => ($hide ? 0 : 0.5)};
+  opacity: ${({ $hide }) => ($hide ? 0 : 0.7)};
   border: solid 1px black;
 
   :hover {
@@ -169,7 +169,7 @@ const ArrowLeftIconStyled = styled(ChevronLeftIcon)<{ $hide: boolean }>`
   padding: 10px;
   border-radius: 50%;
   transition: opacity 0.3s ease-in-out;
-  opacity: ${({ $hide }) => ($hide ? 0 : 0.5)};
+  opacity: ${({ $hide }) => ($hide ? 0 : 0.7)};
 
   :hover {
     opacity: 1;
@@ -192,7 +192,7 @@ const ArrowRightIconStyled = styled(ChevronRightIcon)<{ $hide: boolean }>`
   padding: 10px;
   border-radius: 50%;
   transition: opacity 0.3s ease-in-out;
-  opacity: ${({ $hide }) => ($hide ? 0 : 0.5)};
+  opacity: ${({ $hide }) => ($hide ? 0 : 0.7)};
 
   :hover {
     opacity: 1;
@@ -213,7 +213,7 @@ const PaginationContainer = styled.div<{ $hide: boolean }>`
   left: 50%;
   transform: translateX(-50%);
   transition: opacity 0.3s ease-in-out;
-  opacity: ${({ $hide }) => ($hide ? 0 : 0.3)};
+  opacity: ${({ $hide }) => ($hide ? 0 : 1)};
   width: 50%;
   flex-wrap: wrap;
 

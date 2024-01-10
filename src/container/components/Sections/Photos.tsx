@@ -74,8 +74,9 @@ export function Photos(props: PhotosProps): JSX.Element {
 const Main = tw(ColCenter)`
   w-full
   px-5 md:px-10
-  py-20
   justify-center
+  pb-20
+  min-h-screen
 `;
 
 const FilterContainer = tw(Row)`

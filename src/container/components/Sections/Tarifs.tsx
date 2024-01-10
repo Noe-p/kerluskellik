@@ -36,7 +36,7 @@ export function Tarifs(): JSX.Element {
           </P16>
         </Col>
       </Col>
-      <Col>
+      <Col className='mt-10 md:mt-0'>
         <Title>{t('tarifs.right.title')}</Title>
         <Col>
           <P16>
