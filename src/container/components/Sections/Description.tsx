@@ -24,7 +24,7 @@ const Main = tw(Grid2)`
   justify-center
   items-center
   px-5 md:px-10
-  pb-20 md:pb-0
+  pb-20
 `;
 
 const TextContainer = tw.div`
