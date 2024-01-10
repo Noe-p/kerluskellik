@@ -17,6 +17,7 @@
     "@types/react-dom": "^18.2.13",
     "@types/react-modal": "^3.16.0",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@vercel/analytics": "^1.1.1",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
     "eslint-plugin-deprecate": "^0.8.0",
