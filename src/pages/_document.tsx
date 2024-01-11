@@ -1,6 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { ReactElement } from 'react';
-import { Analytics } from '@vercel/analytics/react';
 class MyDocument extends Document {
   render(): ReactElement {
     return (
@@ -24,7 +23,6 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <Analytics />
         </body>
       </Html>
     );

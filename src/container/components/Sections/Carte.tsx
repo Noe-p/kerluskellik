@@ -9,13 +9,13 @@ export function Carte(): JSX.Element {
   return (
     <Main id={NAVBAR_LINKS.CARTE}>
       <H2 className='text-white'>{t('carte.title')}</H2>
-      <MapStyled src='/images/carte.png' alt='map' />
+      <MapStyled src='/images/carte.webP' alt='map' />
       <P18 className='mt-5 text-center text-white'>
         <Trans i18nKey='carte.address' components={{ br: <br /> }} />
       </P18>
       <img
         className='hidden bateau sm:block'
-        src='/images/bateau.png'
+        src='/images/bateau.webP'
         alt='bateau'
       />
     </Main>
