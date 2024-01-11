@@ -1,4 +1,4 @@
-import { H1, P18 } from '@/components';
+import { H1, P18 } from '@/components/Texts';
 import { scrollTo } from '@/services/utils';
 import { ChevronDoubleDownIcon } from '@heroicons/react/24/solid';
 import { useTranslation } from 'next-i18next';
