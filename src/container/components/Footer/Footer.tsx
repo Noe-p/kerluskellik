@@ -1,5 +1,5 @@
 import { H2, Link, P14, P16 } from '@/components/Texts';
-import { Trans, useTranslation } from 'next-i18next';
+import { useTranslation } from 'next-i18next';
 import React from 'react';
 import tw from 'tailwind-styled-components';
 import { NAVBAR_LINKS } from '../Navbar';
@@ -17,14 +17,6 @@ export function Footer(props: FooterProps): React.JSX.Element {
       <InfosContainer>
         <Title>{t('contact.title')}</Title>
         <P16 className='mb-5 text-white'>{t('contact.name')}</P16>
-        <P16 className='mb-5 text-white'>
-          <Trans
-            i18nKey='contact.address'
-            components={{
-              br: <br />,
-            }}
-          />
-        </P16>
         <LinkStyled href='tel:0298823367' target='_blank'>
           {t('02 98 82 33 67')}
         </LinkStyled>
