@@ -81,6 +81,9 @@
       "end": "<b>Horaire de départ :</b> 11h00"
     }
   },
+  "testimonials": {
+    "title": "Les témoignages"
+  },
   "contact": {
     "title": "Contact",
     "name": "Pierre et Claire PHILIPPE",

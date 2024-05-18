@@ -1,3 +1,6 @@
+import clsx, { ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
 export function scrollTo(id: string) {
   const content = document.getElementById(id);
   if (content) {
@@ -9,4 +12,8 @@ export function scrollTo(id: string) {
       behavior: 'smooth',
     });
   }
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
 }

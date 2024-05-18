@@ -23,7 +23,6 @@ export function Carte(): JSX.Element {
 }
 
 const Main = tw(ColCenter)`
-  w-full
   px-5 md:px-10
   py-20
   justify-center
