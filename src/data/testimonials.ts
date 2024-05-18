@@ -27,6 +27,13 @@ export const testimonals: Testimonial[] = [
     name: 'Anne',
     date: '5 mai 2022',
     content:
-      'Lieu magique, Vue splendide.<br/>Séjour reposant pour toute la famille qui nous laissera des souvenir inoubliables.<br/>Cette maison à une âme, on reviendra certainement.',
+      'Lieu magique, vue splendide.<br/>Séjour reposant pour toute la famille qui nous laissera des souvenirs inoubliables.<br/>Cette maison à une âme, on reviendra certainement.',
+  },
+  {
+    id: 'f8d151ad-bf43-4a24-af93-9ab1e7a829fc',
+    name: 'Mickael',
+    date: '15 mai 2024',
+    content:
+      'Bonsoir Pierre<br/>Nous tenons à vous remercier pour la qualité de votre location.<br/>Grâce à cet endroit paradisiaque nous avons passé un excellent séjour.<br/>Nous allons évidemment recommander votre maison à nos contacts.<br/>Bien à vous',
   },
 ].reverse();
