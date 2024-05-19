@@ -23,13 +23,16 @@ import {
   useDotButton,
   PaginationDot,
 } from '@/components/ui/carousel';
-import { ArrowLeftIcon, ArrowRightIcon, Quote } from 'lucide-react';
+import { ArrowLeftIcon, ArrowRightIcon, Plus, Quote } from 'lucide-react';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { ROUTES } from '@/routing';
 
 export function Testimonials(): JSX.Element {
   const { t } = useTranslation();
   const isMobile = useMediaQuery(MEDIA_QUERIES.SM);
   const [api, setApi] = useState<CarouselApi>();
+  const router = useRouter();
 
   const {
     selectedIndex: slelectedImageIndex,
@@ -56,11 +59,8 @@ export function Testimonials(): JSX.Element {
           </Row>
         )}
         <CarouselContent className='gap-5 mt-3 -ml-0'>
-          {testimonals.map((testimonial) => (
-            <CarouselItem
-              key={testimonial.id}
-              className='p-4 rounded border h-min max-h-100 overflow-auto border-primary lg:basis-[28%] md:basis-[45%] basis-[100%]'
-            >
+          {testimonals.slice(0, 5).map((testimonial) => (
+            <Card key={testimonial.id}>
               <Quote className='w-6 h-6 text-primary' />
               <P16
                 className='mt-3'
@@ -71,8 +71,17 @@ export function Testimonials(): JSX.Element {
                   testimonial?.date && ', '
                 }${testimonial?.date}`}</P12>
               </Row>
-            </CarouselItem>
+            </Card>
           ))}
+          <Card
+            className='flex items-center justify-center cursor-pointer h-100'
+            onClick={() => router.push(ROUTES.testimonials)}
+          >
+            <ColCenter className=''>
+              <Plus className='w-10 h-10 text-primary' />
+              <P16 className='mt-3'>{t('generics.more')}</P16>
+            </ColCenter>
+          </Card>
         </CarouselContent>
         <RowCenter className='justify-center w-full gap-2 mt-4'>
           {scrollSnapsImage.map((snap, index) => (
@@ -94,4 +103,17 @@ const Main = tw(ColCenter)`
   px-5 md:px-10
   py-20
   justify-center
+`;
+
+const Card = tw(CarouselItem)`
+  p-4
+  rounded
+  border
+  h-min
+  max-h-100
+  overflow-auto
+  border-primary
+  lg:basis-[28%]
+  md:basis-[45%]
+  basis-[100%]
 `;

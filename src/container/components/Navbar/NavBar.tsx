@@ -80,7 +80,7 @@ export function NavBar(props: NavBarProps): React.JSX.Element {
           <LogoContainer onClick={() => scrollTo(NAVBAR_LINKS.HOME)}>
             <TextNavigation
               className='text-base'
-              $selected={selectedLink === NAVBAR_LINKS.HOME}
+              $selected={isMobile || selectedLink === NAVBAR_LINKS.HOME}
             >
               {t(`enums.navbar.${NAVBAR_LINKS.HOME}`)}
             </TextNavigation>
@@ -105,18 +105,20 @@ export function NavBar(props: NavBarProps): React.JSX.Element {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             />
             <Menu $isOpen={isMenuOpen}>
-              {Object.values(NAVBAR_LINKS).map((link) => (
-                <MenuLink
-                  key={link}
-                  $selected={selectedLink === link}
-                  onClick={() => {
-                    scrollTo(link);
-                    setIsMenuOpen(false);
-                  }}
-                >
-                  {t(`enums.navbar.${link}`)}
-                </MenuLink>
-              ))}
+              {Object.values(NAVBAR_LINKS)
+                .filter((link) => link !== NAVBAR_LINKS.HOME)
+                .map((link) => (
+                  <MenuLink
+                    key={link}
+                    $selected={selectedLink === link}
+                    onClick={() => {
+                      scrollTo(link);
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    {t(`enums.navbar.${link}`)}
+                  </MenuLink>
+                ))}
             </Menu>
           </Right>
         )}

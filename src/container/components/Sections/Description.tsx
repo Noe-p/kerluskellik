@@ -34,9 +34,9 @@ const TextContainer = tw.div`
   justify-center
   h-full
   w-full
-  border
+  md:border
   border-primary
-  p-10
+  md:p-10
   rounded-lg
   h-fit
 `;

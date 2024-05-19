@@ -77,9 +77,9 @@ const Title = tw(H2)`
 const TextContainer = tw(Grid2)`
   h-full
   w-full md:w-3/4
-  border
+  md:border
   border-white
-  p-10
+  md:p-10
   rounded-lg
   h-fit
   mt-10

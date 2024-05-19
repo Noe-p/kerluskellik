@@ -93,7 +93,9 @@
   },
   "generics": {
     "copyright": "Copyright © 2024 - Kerluskellik - Tous droits réservés",
-    "designed": "Conçu et développé par "
+    "designed": "Conçu et développé par ",
+    "back": "Retour",
+    "more": "En voir plus"
   },
   "common": {
     "loading": "Loading..."

@@ -9,7 +9,7 @@ import {
   Image,
   H2,
 } from '@/components';
-import { FILTERS, JARDIN, PHOTOS } from '@/static/photos';
+import { FILTERS, JARDIN, PHOTOS } from '@/data/photos';
 import { useTranslation } from 'next-i18next';
 import { useEffect, useState } from 'react';
 import { Photo } from '@/types';
@@ -89,7 +89,7 @@ const Filter = tw(P18)<{ $selected: boolean }>`
   cursor-pointer
   border
   border-primary
-  rounded-full
+  rounded
   px-3 py-1
   ${({ $selected }) => $selected && 'bg-primary text-white'}
   transition-all
@@ -108,8 +108,8 @@ const ImageStyled = tw(Image)`
   cursor-pointer
   w-full
   object-contain
-  hover:shadow
-  hover:scale-105
+  md:hover:shadow
+  md:hover:scale-105
   transition-all
   bg-gray-100
 `;

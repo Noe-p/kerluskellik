@@ -99,9 +99,9 @@ const Main = tw(ColCenter)`
 const TextContainer = tw(Grid4)`
   h-full
   w-full 
-  border
+  md:border
   border-primary
-  p-10
+  md:p-10
   rounded-lg
   h-fit
   mt-10

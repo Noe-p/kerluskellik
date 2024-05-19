@@ -12,5 +12,5 @@ const ImageStyled = tw.img`
   h-full
   object-cover
   object-center
-  rounded-lg
+  rounded
 `;
