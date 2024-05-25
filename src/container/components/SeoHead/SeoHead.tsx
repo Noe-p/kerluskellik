@@ -39,7 +39,7 @@ export function SeoHead(): React.JSX.Element {
 
       <script
         async
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+        src='https://www.googletagmanager.com/gtag/js?id=G-8XE9T9LPKP'
       />
       <script
         dangerouslySetInnerHTML={{
@@ -47,7 +47,7 @@ export function SeoHead(): React.JSX.Element {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+            gtag('config', 'G-8XE9T9LPKP', {
               page_path: window.location.pathname,
             });
           `,
