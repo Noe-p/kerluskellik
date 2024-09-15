@@ -10,6 +10,7 @@ import { Carte } from '../components/Sections/Carte';
 import { Tarifs } from '../components/Sections/Tarifs';
 import { Testimonials } from '../components/Sections/Testimonials';
 import { Separator } from '@/components/ui/separator';
+
 export function HomePage(): React.JSX.Element {
   const [isNavClose, setIsNavClose] = useState(false);
   const { scrollY } = useScroll();

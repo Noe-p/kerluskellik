@@ -28,10 +28,6 @@ export const JARDIN: Photo[] = [
     filters: [FILTERS.JARDIN],
     src: '/images/jardin/jardin-4.webP',
   },
-  {
-    filters: [FILTERS.JARDIN],
-    src: '/images/jardin/jardin-5.webP',
-  },
 ];
 
 const RDC: Photo[] = [
@@ -144,10 +140,6 @@ const CHAMBRE4: Photo[] = [
   {
     filters: [FILTERS.CHAMBRE4],
     src: '/images/chambre4/chambre4-2.JPG',
-  },
-  {
-    filters: [FILTERS.CHAMBRE4],
-    src: '/images/chambre4/chambre4-3.JPG',
   },
   {
     filters: [FILTERS.CHAMBRE4],

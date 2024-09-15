@@ -71,9 +71,8 @@
   "tarifs": {
     "left": {
       "title": "Tarifs",
-      "summer": "<b>Semaine Juillet/Aout :</b> à partir de 1200,00€ (TTC)",
-      "beforeSummer": "<b>Semaine Juin/Septembre + Vacances scolaires :</b> à partir de 900,00€ (TTC)",
-      "winter": "<b>Semaine Hors Saison (Autres périodes) :</b> à partir de 800,00€ (TTC)"
+      "summer": "<b>Semaine Juillet/Aout :</b> à partir de 1400,00€ (TTC)",
+      "beforeSummer": "<b>Semaine Juin/Septembre + Vacances scolaires :</b> à partir de 950,00€ (TTC)"
     },
     "right": {
       "title": "Informations",

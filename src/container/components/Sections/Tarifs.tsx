@@ -26,14 +26,6 @@ export function Tarifs(): JSX.Element {
               }}
             />
           </P16>
-          <P16>
-            <Trans
-              i18nKey='tarifs.left.winter'
-              components={{
-                b: <b />,
-              }}
-            />
-          </P16>
         </Col>
       </Col>
       <Col className='mt-10 md:mt-0'>
@@ -50,14 +42,6 @@ export function Tarifs(): JSX.Element {
           <P16>
             <Trans
               i18nKey='tarifs.right.end'
-              components={{
-                b: <b />,
-              }}
-            />
-          </P16>
-          <P16>
-            <Trans
-              i18nKey='tarifs.left.winter'
               components={{
                 b: <b />,
               }}
