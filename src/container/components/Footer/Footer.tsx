@@ -34,7 +34,7 @@ export function Footer(props: FooterProps): React.JSX.Element {
       </InfosContainer>
       <CopyRight>
         {t('generics.designed')}
-        <LinkStyled href='https://noe-philippe.com' target='_blank'>
+        <LinkStyled href='https://noe-philippe.fr' target='_blank'>
           {'Noé PHILIPPE'}
         </LinkStyled>
       </CopyRight>
