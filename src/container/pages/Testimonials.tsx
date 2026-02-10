@@ -1,3 +1,5 @@
+"use client";
+
 import { ColCenter, H2, Layout, P12, P16, Row } from "@/components";
 import { Card } from "@/components/ui/card";
 import { testimonals } from "@/data";
@@ -6,21 +8,27 @@ import { ArrowLeft, Quote } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 import { NAVBAR_LINKS } from "../components";
 
 const ResponsiveMasonry = dynamic(
   () => import("react-responsive-masonry").then((mod) => mod.ResponsiveMasonry),
-  { ssr: false, loading: () => <TestimonialsFallback /> },
+  { ssr: false },
 );
 
 const Masonry = dynamic(
   () => import("react-responsive-masonry").then((mod) => mod.default),
-  { ssr: false, loading: () => <TestimonialsFallback /> },
+  { ssr: false },
 );
 
 export function Testimonials(): React.JSX.Element {
   const { t } = useTranslation();
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   return (
     <Layout isNavClose={false}>
@@ -35,30 +43,34 @@ export function Testimonials(): React.JSX.Element {
           </Link>
         </Row>
         <H2 className="my-5">{t("testimonials.title")}</H2>
-        <ResponsiveMasonry
-          className="w-full"
-          columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
-        >
-          <Masonry gutter="10px">
-            {testimonals.map((testimonial) => (
-              <Card
-                key={testimonial.id}
-                className="p-4 rounded  border h-min border-primary lg:basis-[28%] md:basis-[45%] basis-[100%]"
-              >
-                <Quote className="w-6 h-6 text-primary" />
-                <P16
-                  className="mt-3"
-                  dangerouslySetInnerHTML={{ __html: testimonial.content }}
-                />
-                <Row className="justify-end mt-5">
-                  <P12 className="italic">{`${testimonial.name}${
-                    testimonial?.date && ", "
-                  }${testimonial?.date}`}</P12>
-                </Row>
-              </Card>
-            ))}
-          </Masonry>
-        </ResponsiveMasonry>
+        {isLoaded ? (
+          <ResponsiveMasonry
+            className="w-full"
+            columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+          >
+            <Masonry gutter="10px">
+              {testimonals.map((testimonial) => (
+                <Card
+                  key={testimonial.id}
+                  className="p-4 rounded  border h-min border-primary lg:basis-[28%] md:basis-[45%] basis-[100%]"
+                >
+                  <Quote className="w-6 h-6 text-primary" />
+                  <P16
+                    className="mt-3"
+                    dangerouslySetInnerHTML={{ __html: testimonial.content }}
+                  />
+                  <Row className="justify-end mt-5">
+                    <P12 className="italic">{`${testimonial.name}${
+                      testimonial?.date && ", "
+                    }${testimonial?.date}`}</P12>
+                  </Row>
+                </Card>
+              ))}
+            </Masonry>
+          </ResponsiveMasonry>
+        ) : (
+          <TestimonialsFallback />
+        )}
       </Main>
     </Layout>
   );
