@@ -9,12 +9,14 @@ import Link from "next/link";
 import tw from "tailwind-styled-components";
 import { NAVBAR_LINKS } from "../components";
 
-const ResponsiveMasonry = dynamic(() =>
-  import("react-responsive-masonry").then((mod) => mod.ResponsiveMasonry),
+const ResponsiveMasonry = dynamic(
+  () => import("react-responsive-masonry").then((mod) => mod.ResponsiveMasonry),
+  { ssr: false, loading: () => <TestimonialsFallback /> },
 );
 
-const Masonry = dynamic(() =>
-  import("react-responsive-masonry").then((mod) => mod.default),
+const Masonry = dynamic(
+  () => import("react-responsive-masonry").then((mod) => mod.default),
+  { ssr: false, loading: () => <TestimonialsFallback /> },
 );
 
 export function Testimonials(): React.JSX.Element {
@@ -59,6 +61,30 @@ export function Testimonials(): React.JSX.Element {
         </ResponsiveMasonry>
       </Main>
     </Layout>
+  );
+}
+
+function TestimonialsFallback(): React.JSX.Element {
+  return (
+    <div className="w-full columns-1 md:columns-2 lg:columns-3 [column-gap:10px]">
+      {testimonals.map((testimonial) => (
+        <Card
+          key={testimonial.id}
+          className="mb-[10px] break-inside-avoid p-4 rounded border h-min border-primary"
+        >
+          <Quote className="w-6 h-6 text-primary" />
+          <P16
+            className="mt-3"
+            dangerouslySetInnerHTML={{ __html: testimonial.content }}
+          />
+          <Row className="justify-end mt-5">
+            <P12 className="italic">{`${testimonial.name}${
+              testimonial?.date && ", "
+            }${testimonial?.date}`}</P12>
+          </Row>
+        </Card>
+      ))}
+    </div>
   );
 }
 
