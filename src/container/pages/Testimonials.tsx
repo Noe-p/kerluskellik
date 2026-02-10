@@ -9,14 +9,12 @@ import Link from "next/link";
 import tw from "tailwind-styled-components";
 import { NAVBAR_LINKS } from "../components";
 
-const ResponsiveMasonry = dynamic(
-  () => import("react-responsive-masonry").then((mod) => mod.ResponsiveMasonry),
-  { ssr: false },
+const ResponsiveMasonry = dynamic(() =>
+  import("react-responsive-masonry").then((mod) => mod.ResponsiveMasonry),
 );
 
-const Masonry = dynamic(
-  () => import("react-responsive-masonry").then((mod) => mod.default),
-  { ssr: false },
+const Masonry = dynamic(() =>
+  import("react-responsive-masonry").then((mod) => mod.default),
 );
 
 export function Testimonials(): React.JSX.Element {
