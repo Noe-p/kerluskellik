@@ -1,13 +1,23 @@
-import { ColCenter, H2, Layout, P12, P16, Row } from '@/components';
-import { Card } from '@/components/ui/card';
-import { testimonals } from '@/data';
-import { ROUTES } from '@/routing';
-import { ArrowLeft, Quote } from 'lucide-react';
-import { useTranslation } from 'next-i18next';
-import Link from 'next/link';
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
-import tw from 'tailwind-styled-components';
-import { NAVBAR_LINKS } from '../components';
+import { ColCenter, H2, Layout, P12, P16, Row } from "@/components";
+import { Card } from "@/components/ui/card";
+import { testimonals } from "@/data";
+import { ROUTES } from "@/routing";
+import { ArrowLeft, Quote } from "lucide-react";
+import { useTranslation } from "next-i18next";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import tw from "tailwind-styled-components";
+import { NAVBAR_LINKS } from "../components";
+
+const ResponsiveMasonry = dynamic(
+  () => import("react-responsive-masonry").then((mod) => mod.ResponsiveMasonry),
+  { ssr: false },
+);
+
+const Masonry = dynamic(
+  () => import("react-responsive-masonry").then((mod) => mod.default),
+  { ssr: false },
+);
 
 export function Testimonials(): React.JSX.Element {
   const { t } = useTranslation();
@@ -15,34 +25,34 @@ export function Testimonials(): React.JSX.Element {
   return (
     <Layout isNavClose={false}>
       <Main>
-        <Row className='flex w-full'>
+        <Row className="flex w-full">
           <Link
-            className='flex gap-1 w-fit'
+            className="flex gap-1 w-fit"
             href={`${ROUTES.home}#${NAVBAR_LINKS.TESTIMONIALS}`}
           >
             <ArrowLeft size={24} />
-            <P16>{t('generics.back')}</P16>
+            <P16>{t("generics.back")}</P16>
           </Link>
         </Row>
-        <H2 className='my-5'>{t('testimonials.title')}</H2>
+        <H2 className="my-5">{t("testimonials.title")}</H2>
         <ResponsiveMasonry
-          className='w-full'
+          className="w-full"
           columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
         >
-          <Masonry gutter='10px'>
+          <Masonry gutter="10px">
             {testimonals.map((testimonial) => (
               <Card
                 key={testimonial.id}
-                className='p-4 rounded  border h-min border-primary lg:basis-[28%] md:basis-[45%] basis-[100%]'
+                className="p-4 rounded  border h-min border-primary lg:basis-[28%] md:basis-[45%] basis-[100%]"
               >
-                <Quote className='w-6 h-6 text-primary' />
+                <Quote className="w-6 h-6 text-primary" />
                 <P16
-                  className='mt-3'
+                  className="mt-3"
                   dangerouslySetInnerHTML={{ __html: testimonial.content }}
                 />
-                <Row className='justify-end mt-5'>
-                  <P12 className='italic'>{`${testimonial.name}${
-                    testimonial?.date && ', '
+                <Row className="justify-end mt-5">
+                  <P12 className="italic">{`${testimonial.name}${
+                    testimonial?.date && ", "
                   }${testimonial?.date}`}</P12>
                 </Row>
               </Card>
