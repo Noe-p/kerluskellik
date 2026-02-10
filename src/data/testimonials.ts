@@ -2,6 +2,13 @@ import { Testimonial } from '@/types/Testimonal';
 
 export const testimonals: Testimonial[] = [
   {
+    id: 'd9c8e1b0-5a3c-4f1e-9b2c-7a1e5f8b6c3d',
+    name: 'Famille Schneider',
+    date: 'Octobre 2024',
+    content:
+      'Une formidable semaine dans votre belle maison dans laquelle on se sent immédiatement accueilli et enveloppé d’une atmosphère authentique et familiale.<br/>Le jardin est tout simplement splendide.<br/>Les rafraîchissements effectués sont très réussis et préservent le charme de cette maison qui, on le sent, a toute une histoire.<br/><br/>La literie est super, ce qui est très important lorsqu’on vient se ressourcer.<br/><br/>On ne peut par ailleurs qu’apprécier les petites attentions et réflexions que vous avez pour que vos locataires se sentent bien et comme chez eux : livres dans toutes les pièces, jeux, …<br/>Comme vous y invitez, je reprime idées et souhaits : le second fantastique si vous pouviez conserver la cheminée aussi dans le salon. Quoi de plus merveilleux que de se réchauffer au coin du feu après une longue balade.<br/><br/>Nous garderons de notre séjour un très beau souvenir ♡',
+  },
+  {
     id: 'a900f548-462b-46e6-8ed5-629723cd3c7c',
     name: 'Les familles Leclair-Le Fentec et Bonnet-Plantet',
     date: '6 mars 2021',

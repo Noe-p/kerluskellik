@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from 'react';
-import videojs from 'video.js';
-import 'videojs-youtube';
-import 'video.js/dist/video-js.css';
+import React, { useEffect, useRef } from "react";
+import videojs from "video.js";
+import "video.js/dist/video-js.css";
+import "videojs-youtube";
 
 interface YoutubeVideoProps {
   src: string;
   className?: string;
 }
 
-export function YoutubeVideo(props: YoutubeVideoProps): JSX.Element {
+export function YoutubeVideo(props: YoutubeVideoProps): React.JSX.Element {
   const { src, className } = props;
   const videoNode = useRef(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -22,7 +22,7 @@ export function YoutubeVideo(props: YoutubeVideoProps): JSX.Element {
         ...initialOptions,
         ...videoJsOptions,
       }).ready(function () {
-        console.log('Player Ready');
+        console.log("Player Ready");
       });
     }
     //clear up player on dismount
@@ -46,7 +46,7 @@ export function YoutubeVideo(props: YoutubeVideoProps): JSX.Element {
   const videoJsOptions = {
     sources: [
       {
-        type: 'video/youtube', //important
+        type: "video/youtube", //important
         src: src,
       },
     ],
@@ -57,12 +57,12 @@ export function YoutubeVideo(props: YoutubeVideoProps): JSX.Element {
       <video
         ref={videoNode}
         style={{
-          overflow: 'hidden',
-          width: '100%',
-          height: 'auto',
-          borderRadius: '0.5rem',
+          overflow: "hidden",
+          width: "100%",
+          height: "auto",
+          borderRadius: "0.5rem",
         }}
-        className={'video-js'}
+        className={"video-js"}
       />
     </div>
   );

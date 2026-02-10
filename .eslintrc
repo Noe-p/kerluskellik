@@ -1,7 +1,7 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
   },
   "extends": [
     "eslint:recommended",
@@ -9,24 +9,24 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "plugin:react/jsx-runtime",
-    "next/core-web-vitals"
+    "next/core-web-vitals",
   ],
   "settings": {
     "react": {
-      "version": "detect"
-    }
+      "version": "detect",
+    },
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
     },
     "ecmaVersion": 12,
-    "sourceType": "module"
+    "sourceType": "module",
   },
   "plugins": ["react", "@typescript-eslint", "deprecate", "no-loops"],
   "rules": {
-    "quotes": [2, "single", "avoid-escape"],
+    "quotes": 0,
     "indent": [2, 2, { "SwitchCase": 1 }],
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/no-use-before-define": "off",
@@ -39,6 +39,6 @@
     "react-hooks/exhaustive-deps": "off",
     "no-loops/no-loops": 2,
     "react/jsx-uses-react": 1,
-    "react/react-in-jsx-scope": 0
-  }
+    "react/react-in-jsx-scope": 0,
+  },
 }

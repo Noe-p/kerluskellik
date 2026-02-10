@@ -1,24 +1,24 @@
-import tw from 'tailwind-styled-components';
-import { NAVBAR_LINKS } from '../Navbar';
 import {
   ColCenter,
   Grid3,
+  H2,
+  Image,
   MediasSwiper,
   P18,
   Row,
-  Image,
-  H2,
-} from '@/components';
-import { FILTERS, JARDIN, PHOTOS } from '@/data/photos';
-import { useTranslation } from 'next-i18next';
-import { useEffect, useState } from 'react';
-import { Photo } from '@/types';
+} from "@/components";
+import { FILTERS, JARDIN, PHOTOS } from "@/data/photos";
+import { Photo } from "@/types";
+import { useTranslation } from "next-i18next";
+import { useEffect, useState } from "react";
+import tw from "tailwind-styled-components";
+import { NAVBAR_LINKS } from "../Navbar";
 
 interface PhotosProps {
   setIsNavClose: (isNavClose: boolean) => void;
 }
 
-export function Photos(props: PhotosProps): JSX.Element {
+export function Photos(props: PhotosProps): React.JSX.Element {
   const { setIsNavClose } = props;
   const { t } = useTranslation();
   const [filterSelected, setFilterSelected] = useState(FILTERS.JARDIN);
@@ -32,7 +32,7 @@ export function Photos(props: PhotosProps): JSX.Element {
 
   return (
     <Main id={NAVBAR_LINKS.PHOTOS}>
-      <H2 className='mb-5'>{t('photos.title')}</H2>
+      <H2 className="mb-5">{t("photos.title")}</H2>
       <FilterContainer>
         {Object.values(FILTERS).map((filter) => (
           <Filter
@@ -54,7 +54,7 @@ export function Photos(props: PhotosProps): JSX.Element {
               setCurrentImage(index);
             }}
             src={media.src}
-            alt='media'
+            alt="media"
           />
         ))}
       </MediaContainer>
@@ -91,7 +91,7 @@ const Filter = tw(P18)<{ $selected: boolean }>`
   border-primary
   rounded
   px-3 py-1
-  ${({ $selected }) => $selected && 'bg-primary text-white'}
+  ${({ $selected }) => $selected && "bg-primary text-white"}
   transition-all
   hover:bg-primary
   hover:text-white

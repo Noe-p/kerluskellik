@@ -1,19 +1,22 @@
-import tw from 'tailwind-styled-components';
-import { NAVBAR_LINKS } from '../Navbar';
-import { Image, Grid2, H2, P16 } from '@/components';
-import { Trans, useTranslation } from 'next-i18next';
+import { Grid2, H2, Image, P16 } from "@/components";
+import { Trans, useTranslation } from "next-i18next";
+import tw from "tailwind-styled-components";
+import { NAVBAR_LINKS } from "../Navbar";
 
-export function Description(): JSX.Element {
+export function Description(): React.JSX.Element {
   const { t } = useTranslation();
   return (
     <Main id={NAVBAR_LINKS.DESCRIPTION}>
       <TextContainer>
-        <H2>{t('description.title')}</H2>
-        <P16 className='mt-5'>
-          <Trans i18nKey='description.content' />
+        <H2>{t("description.title")}</H2>
+        <P16 className="mt-5">
+          <Trans
+            i18nKey="description.content"
+            components={{ br: <br key="br-1" /> }}
+          />
         </P16>
       </TextContainer>
-      <Image src='/images/maison.webP' alt='description' />
+      <Image src="/images/maison.webP" alt="description" />
     </Main>
   );
 }

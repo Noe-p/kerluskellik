@@ -1,56 +1,56 @@
-import tw from 'tailwind-styled-components';
-import { NAVBAR_LINKS } from '../Navbar';
-import { ColCenter, Grid2, H2, H3, P16 } from '@/components';
-import { Trans, useTranslation } from 'next-i18next';
+import { ColCenter, Grid2, H2, H3, P16 } from "@/components";
+import { Trans, useTranslation } from "next-i18next";
+import tw from "tailwind-styled-components";
+import { NAVBAR_LINKS } from "../Navbar";
 
-export function Agencement(): JSX.Element {
+export function Agencement(): React.JSX.Element {
   const { t } = useTranslation();
 
   return (
     <Main id={NAVBAR_LINKS.AGENCEMENT}>
-      <Title>{t('agencement.title')}</Title>
+      <Title>{t("agencement.title")}</Title>
       <TextContainer>
         <Left>
           <ColCenter>
-            <ItemTitle>{t('agencement.items.item1.title')}</ItemTitle>
+            <ItemTitle>{t("agencement.items.item1.title")}</ItemTitle>
             <ItemDescription>
-              {t('agencement.items.item1.content')}
+              {t("agencement.items.item1.content")}
             </ItemDescription>
           </ColCenter>
-          <ColCenter className='mt-10 '>
-            <ItemTitle>{t('agencement.items.item2.title')}</ItemTitle>
+          <ColCenter className="mt-10 ">
+            <ItemTitle>{t("agencement.items.item2.title")}</ItemTitle>
             <ItemList>
-              <Item>{t('agencement.items.item2.list.item1')}</Item>
-              <Item>{t('agencement.items.item2.list.item2')}</Item>
-              <Item>{t('agencement.items.item2.list.item3')}</Item>
-              <Item>{t('agencement.items.item2.list.item4')}</Item>
+              <Item>{t("agencement.items.item2.list.item1")}</Item>
+              <Item>{t("agencement.items.item2.list.item2")}</Item>
+              <Item>{t("agencement.items.item2.list.item3")}</Item>
+              <Item>{t("agencement.items.item2.list.item4")}</Item>
             </ItemList>
           </ColCenter>
         </Left>
         <Right>
-          <ColCenter className='h-full'>
-            <ItemTitle>{t('agencement.items.item3.title')}</ItemTitle>
+          <ColCenter className="h-full">
+            <ItemTitle>{t("agencement.items.item3.title")}</ItemTitle>
             <ItemList>
-              <Item>{t('agencement.items.item3.list.item1')}</Item>
-              <Item>{t('agencement.items.item3.list.item2')}</Item>
+              <Item>{t("agencement.items.item3.list.item1")}</Item>
+              <Item>{t("agencement.items.item3.list.item2")}</Item>
             </ItemList>
           </ColCenter>
-          <ColCenter className='h-full mt-10'>
-            <ItemTitle>{t('agencement.items.item4.title')}</ItemTitle>
+          <ColCenter className="h-full mt-10">
+            <ItemTitle>{t("agencement.items.item4.title")}</ItemTitle>
             <ItemList>
               <Item>
                 <Trans
-                  i18nKey='agencement.items.item4.list.item1'
+                  i18nKey="agencement.items.item4.list.item1"
                   components={{
-                    b: <b />,
+                    b: <b key="b-1" />,
                   }}
                 />
               </Item>
               <Item>
                 <Trans
-                  i18nKey='agencement.items.item4.list.item2'
+                  i18nKey="agencement.items.item4.list.item2"
                   components={{
-                    b: <b />,
+                    b: <b key="b-2" />,
                   }}
                 />
               </Item>

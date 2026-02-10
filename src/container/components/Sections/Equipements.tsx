@@ -1,87 +1,87 @@
-import tw from 'tailwind-styled-components';
-import { NAVBAR_LINKS } from '../Navbar';
-import { Col, ColCenter, Grid4, H2, P18, Row } from '@/components';
-import { useTranslation } from 'next-i18next';
-import { CheckIcon } from '@heroicons/react/24/solid';
+import { Col, ColCenter, Grid4, H2, P18, Row } from "@/components";
+import { CheckIcon } from "@heroicons/react/24/solid";
+import { useTranslation } from "next-i18next";
+import tw from "tailwind-styled-components";
+import { NAVBAR_LINKS } from "../Navbar";
 
-export function Equipements(): JSX.Element {
+export function Equipements(): React.JSX.Element {
   const { t } = useTranslation();
 
   return (
     <Main id={NAVBAR_LINKS.EQUIPEMENTS}>
-      <H2>{t('equipements.title')}</H2>
+      <H2>{t("equipements.title")}</H2>
       <TextContainer>
         <ColItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item1')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item1")}</Label>
           </ListItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item2')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item2")}</Label>
           </ListItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item3')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item3")}</Label>
           </ListItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item4')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item4")}</Label>
           </ListItem>
         </ColItem>
         <ColItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item5')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item5")}</Label>
           </ListItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item6')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item6")}</Label>
           </ListItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item7')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item7")}</Label>
           </ListItem>
 
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item8')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item8")}</Label>
           </ListItem>
         </ColItem>
         <ColItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item9')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item9")}</Label>
           </ListItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item10')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item10")}</Label>
           </ListItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item11')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item11")}</Label>
           </ListItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item12')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item12")}</Label>
           </ListItem>
         </ColItem>
         <ColItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item13')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item13")}</Label>
           </ListItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item14')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item14")}</Label>
           </ListItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item15')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item15")}</Label>
           </ListItem>
           <ListItem>
-            <CheckIcon className='w-5 h-5 text-primary' />
-            <Label>{t('equipements.list.item16')}</Label>
+            <CheckIcon className="w-5 h-5 text-primary" />
+            <Label>{t("equipements.list.item16")}</Label>
           </ListItem>
         </ColItem>
       </TextContainer>

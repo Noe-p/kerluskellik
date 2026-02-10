@@ -1,17 +1,17 @@
 /* eslint-disable indent */
-import { Image, Modal } from '@/components';
+import { Image, Modal } from "@/components";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   XMarkIcon,
-} from '@heroicons/react/24/solid';
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import SwiperCore, { Navigation } from 'swiper';
-import { Swiper as ReactSwiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.min.css';
-import 'swiper/swiper.min.css';
-import { NavigationOptions } from 'swiper/types/components/navigation';
+} from "@heroicons/react/24/solid";
+import React, { useState } from "react";
+import styled from "styled-components";
+import SwiperCore, { Navigation } from "swiper";
+import { Swiper as ReactSwiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
+import { NavigationOptions } from "swiper/types/components/navigation";
 
 interface MediasSwiperProps {
   className?: string;
@@ -21,7 +21,7 @@ interface MediasSwiperProps {
   currentImage?: number;
 }
 
-export function MediasSwiper(props: MediasSwiperProps): JSX.Element {
+export function MediasSwiper(props: MediasSwiperProps): React.JSX.Element {
   const { className, isOpen, setIsOpen, medias, currentImage = 0 } = props;
   const [swiper, setSwiper] = useState<SwiperCore>();
   const [hideArrows, setHideArrows] = useState(false);
@@ -40,19 +40,19 @@ export function MediasSwiper(props: MediasSwiperProps): JSX.Element {
         </CloseIconContainer>
         <ArrowLeftIconStyled
           ref={navigationPrevRef}
-          className='prev'
+          className="prev"
           $hide={hideArrows}
         />
         <ArrowRightIconStyled
           ref={navigationNextRef}
-          className='next'
+          className="next"
           $hide={hideArrows}
         />
         <ReactSwiperStyled
           onSwiper={(swiper) => setSwiper(swiper)}
           navigation={{
-            prevEl: 'prev',
-            nextEl: 'next',
+            prevEl: "prev",
+            nextEl: "next",
           }}
           onBeforeInit={(swiper) => {
             if (swiper && swiper.params && swiper.params.navigation) {
@@ -73,7 +73,7 @@ export function MediasSwiper(props: MediasSwiperProps): JSX.Element {
             <SwiperSlide key={media} onClick={() => setHideArrows(!hideArrows)}>
               <ImageContainer>
                 <ImageStyled>
-                  <Image className='object-contain' src={media} alt={media} />
+                  <Image className="object-contain" src={media} alt={media} />
                 </ImageStyled>
               </ImageContainer>
             </SwiperSlide>
@@ -229,10 +229,10 @@ const PaginationContainer = styled.div<{ $hide: boolean }>`
 `;
 
 const PaginationButton = styled.button<{ $active: boolean }>`
-  background-color: ${({ $active }) => ($active ? 'black' : 'white')};
+  background-color: ${({ $active }) => ($active ? "black" : "white")};
   width: 40px;
   height: 6px;
-  border: solid 1px ${({ $active }) => ($active ? 'white' : 'black')};
+  border: solid 1px ${({ $active }) => ($active ? "white" : "black")};
   margin: 2px 5px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
