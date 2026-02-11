@@ -13,7 +13,7 @@ export function Carte(): React.JSX.Element {
       <P18 className="mt-5 text-center text-white">
         <Trans i18nKey="carte.address" components={{ br: <br key="br-1" /> }} />
       </P18>
-      <img
+      <Image
         className="hidden bateau sm:block"
         src="/images/bateau.webP"
         alt="bateau"
