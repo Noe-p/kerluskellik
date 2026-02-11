@@ -6,21 +6,11 @@ import { testimonals } from "@/data";
 import { ROUTES } from "@/routing";
 import { ArrowLeft, Quote } from "lucide-react";
 import { useTranslation } from "next-i18next";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import tw from "tailwind-styled-components";
 import { NAVBAR_LINKS } from "../components";
-
-const ResponsiveMasonry = dynamic(
-  () => import("react-responsive-masonry").then((mod) => mod.ResponsiveMasonry),
-  { ssr: false },
-);
-
-const Masonry = dynamic(
-  () => import("react-responsive-masonry").then((mod) => mod.default),
-  { ssr: false },
-);
 
 export function Testimonials(): React.JSX.Element {
   const { t } = useTranslation();
