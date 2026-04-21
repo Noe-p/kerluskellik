@@ -9,12 +9,14 @@ export function Carte(): React.JSX.Element {
   return (
     <Main id={NAVBAR_LINKS.CARTE}>
       <H2 className="text-white">{t("carte.title")}</H2>
-      <MapStyled src="/images/carte.webP" alt="map" />
+      <MapContainer>
+        <MapStyled src="/images/carte.webP" alt="map" objectFit="contain" />
+      </MapContainer>
       <P18 className="mt-5 text-center text-white">
         <Trans i18nKey="carte.address" components={{ br: <br key="br-1" /> }} />
       </P18>
-      <Image
-        className="hidden bateau sm:block"
+      <BateauImage
+        className="bateau sm:block"
         src="/images/bateau.webP"
         alt="bateau"
       />
@@ -30,8 +32,22 @@ const Main = tw(ColCenter)`
   bg-primary
 `;
 
-const MapStyled = tw(Image)`
+const MapContainer = tw.div`
   w-full
-  h-full
+  h-auto
+  max-w-2xl
+  relative
+`;
 
+const MapStyled = tw(Image)`
+  object-contain
+  scale-105
+
+`;
+
+const BateauImage = tw.img`
+  hidden
+  sm:block
+  relative
+  mt-10
 `;

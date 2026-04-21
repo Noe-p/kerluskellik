@@ -1,16 +1,15 @@
-
-import { useState, useEffect } from 'react'
+import { useEffect, useRef, useState } from "react";
 
 type SSRRect = {
-  bottom: number
-  height: number
-  left: number
-  right: number
-  top: number
-  width: number
-  x: number
-  y: number
-}
+  bottom: number;
+  height: number;
+  left: number;
+  right: number;
+  top: number;
+  width: number;
+  x: number;
+  y: number;
+};
 const EmptySSRRect: SSRRect = {
   bottom: 0,
   height: 0,
@@ -20,7 +19,7 @@ const EmptySSRRect: SSRRect = {
   width: 0,
   x: 0,
   y: 0,
-}
+};
 
 /**
  * useScroll React custom hook
@@ -41,41 +40,51 @@ const EmptySSRRect: SSRRect = {
  * @returns An object containing the current scroll position in the Y and X axis, as well as the scroll direction.
  */
 const useScroll = () => {
-  const [lastScrollTop, setLastScrollTop] = useState<number>(0)
+  const [lastScrollTop, setLastScrollTop] = useState<number>(0);
   const [bodyOffset, setBodyOffset] = useState<DOMRect | SSRRect>(
-    typeof window === 'undefined' || !window.document
+    typeof window === "undefined" || !window.document
       ? EmptySSRRect
-      : document.body.getBoundingClientRect()
-  )
-  const [scrollY, setScrollY] = useState<number>(bodyOffset.top)
-  const [scrollX, setScrollX] = useState<number>(bodyOffset.left)
-  const [scrollDirection, setScrollDirection] =
-    useState<'down' | 'up' | undefined>()
+      : document.body.getBoundingClientRect(),
+  );
+  const [scrollY, setScrollY] = useState<number>(bodyOffset.top);
+  const [scrollX, setScrollX] = useState<number>(bodyOffset.left);
+  const [scrollDirection, setScrollDirection] = useState<
+    "down" | "up" | undefined
+  >();
+  const ticking = useRef(false);
 
-  const listener = () => {
-    setBodyOffset(
-      typeof window === 'undefined' || !window.document
-        ? EmptySSRRect
-        : document.body.getBoundingClientRect()
-    )
-    setScrollY(-bodyOffset.top)
-    setScrollX(bodyOffset.left)
-    setScrollDirection(lastScrollTop > -bodyOffset.top ? 'down' : 'up')
-    setLastScrollTop(-bodyOffset.top)
-  }
+  const handleScroll = () => {
+    if (!ticking.current) {
+      window.requestAnimationFrame(() => {
+        const newBodyOffset =
+          typeof window === "undefined" || !window.document
+            ? EmptySSRRect
+            : document.body.getBoundingClientRect();
+        const newScrollY = -newBodyOffset.top;
+
+        setBodyOffset(newBodyOffset);
+        setScrollY(newScrollY);
+        setScrollX(newBodyOffset.left);
+        setScrollDirection(lastScrollTop > newScrollY ? "down" : "up");
+        setLastScrollTop(newScrollY);
+        ticking.current = false;
+      });
+      ticking.current = true;
+    }
+  };
 
   useEffect(() => {
-    window.addEventListener('scroll', listener)
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
-      window.removeEventListener('scroll', listener)
-    }
-  })
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollTop]);
 
   return {
     scrollY,
     scrollX,
     scrollDirection,
-  }
-}
+  };
+};
 
-export { useScroll }
+export { useScroll };

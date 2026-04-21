@@ -1,10 +1,10 @@
-import { H1, P18 } from '@/components/Texts';
-import { scrollTo } from '@/services/utils';
-import { ChevronDoubleDownIcon } from '@heroicons/react/24/solid';
-import { useTranslation } from 'next-i18next';
-import React, { useEffect, useState } from 'react';
-import tw from 'tailwind-styled-components';
-import { NAVBAR_LINKS } from '../Navbar';
+import { H1, P18 } from "@/components/Texts";
+import { scrollTo } from "@/services/utils";
+import { ChevronDoubleDownIcon } from "@heroicons/react/24/solid";
+import { useTranslation } from "next-i18next";
+import React from "react";
+import tw from "tailwind-styled-components";
+import { NAVBAR_LINKS } from "../Navbar";
 
 interface HeaderProps {
   className?: string;
@@ -13,22 +13,15 @@ interface HeaderProps {
 export function Header(props: HeaderProps): React.JSX.Element {
   const { className } = props;
   const { t } = useTranslation();
-  const [isAnimated, setIsAnimated] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsAnimated(true);
-    }, 100);
-  }, []);
 
   return (
     <Main id={NAVBAR_LINKS.HOME} className={className}>
       <Filter />
       <VideoBackground autoPlay loop muted playsInline>
-        <source src='/videos/header.mp4' type='video/mp4' />
+        <source src="/videos/header.mp4" type="video/mp4" />
       </VideoBackground>
-      <Title $isAnimated={isAnimated}>{t('home.name')}</Title>
-      <SubTitle $isAnimated={isAnimated}>{t('home.subTitle')}</SubTitle>
+      <Title>{t("home.name")}</Title>
+      <SubTitle>{t("home.subTitle")}</SubTitle>
       <SlideButton onClick={() => scrollTo(NAVBAR_LINKS.DESCRIPTION)} />
     </Main>
   );
@@ -67,43 +60,30 @@ const VideoBackground = tw.video`
   z-0
   object-cover
   object-center
-  
 `;
 
-const Title = tw(H1)<{ $isAnimated: boolean }>`
+const Title = tw(H1)`
   text-white
   text-6xl
   lg:text-8xl
   text-center
-  transform
-  transition-all
-  duration-1000
-  delay-100
-  ease-in-out
-  ${(props) => (props.$isAnimated ? 'translate-y-0' : '-translate-y-50')}
-  ${(props) => (props.$isAnimated ? 'opacity-100' : 'opacity-0')}
   line-height-1
   z-20
   font-title
   normal-case
+  animate-fade-in-up
 `;
 
-const SubTitle = tw(P18)<{ $isAnimated: boolean }>`
+const SubTitle = tw(P18)`
   text-white
   text-xl
   lg:text-5xl
   mt-5
   text-center
-  transform
-  transition-all
-  duration-1000
-  delay-100
-  ease-in-out
-  ${(props) => (props.$isAnimated ? 'translate-y-0' : '-translate-y-40')}
-  ${(props) => (props.$isAnimated ? 'opacity-100' : 'opacity-0')}
   line-height-1
   z-20
   font-text
+  animate-fade-in-up-delay
 `;
 
 const SlideButton = tw(ChevronDoubleDownIcon)`
@@ -111,9 +91,6 @@ const SlideButton = tw(ChevronDoubleDownIcon)`
   animate-bounce
   z-20
   cursor-pointer
-  transition-all
-  duration-1500
-  ease-in-out
   absolute
   bottom-10
   left-1/2
@@ -121,4 +98,5 @@ const SlideButton = tw(ChevronDoubleDownIcon)`
   -translate-x-1/2
   w-10
   h-10
+  will-change-transform
 `;

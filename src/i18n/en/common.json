@@ -1,22 +1,131 @@
 {
   "langage": "en",
-  "home": {
-    "name": "home",
-    "subTitle": "This is the home page",
-    "title": "Welcome to the starter-template! 👋",
-    "link": "About"
+  "seo": {
+    "title": "Vacation Rental House Island of Batz | Kerluskellik - Sea View, 9 People",
+    "description": "Kerluskellik: house rental on the island of Batz with sea view. 4 bedrooms, 9 people. Authentic house, enclosed garden, 50m from beach. Bretagne vacation.",
+    "keywords": "house rental island of batz, vacation rental batz, house rental brittany, island of batz rental, kerluskellik, house sea view batz, guesthouse island of batz, rental 9 people batz"
   },
-  "about": {
-    "name": "About",
-    "title": "About",
-    "subtitle": "This is the about page",
-    "link": "Back to Home"
+  "home": {
+    "name": "Kerluskellik",
+    "subTitle": "\"A house of character\""
+  },
+  "description": {
+    "title": "Description",
+    "content": "Located facing the sea, this magnificent house of character, south-facing, is an authentic captain's house. It is located on the island of Batz, with sea views from all rooms. Surrounded by an enclosed garden, it is located 50m from the beach and 5 minutes from the ferry terminal.<br/><br/>Everything here is conducive to relaxation, reading in front of a good fireplace, children playing in the garden or on the beach in complete peace, walks along the wild coast, many board games."
+  },
+  "agencement": {
+    "title": "Layout",
+    "items": {
+      "item1": {
+        "title": "Ground Floor",
+        "content": "Large living room. Fully equipped kitchen (dishwasher, microwave, oven, coffee maker, kettle, toaster, espresso machine, bread maker). Pantry (washing machine, dryer). Bathroom"
+      },
+      "item2": {
+        "title": "Floor 1",
+        "list": {
+          "item1": "1 bedroom with 1 double bed (140cm)",
+          "item2": "1 bedroom with 1 double bed (120cm) + balcony",
+          "item3": "1 bedroom with 1 double bed (140cm) + 2 single beds (80cm)",
+          "item4": "1 bathroom with 1 toilet"
+        }
+      },
+      "item3": {
+        "title": "Floor 2",
+        "list": {
+          "item1": "1 bedroom with 1 double bed (140cm)",
+          "item2": "Sink"
+        }
+      },
+      "item4": {
+        "title": "Information",
+        "list": {
+          "item1": "<b>Capacity:</b> 9 people",
+          "item2": "<b>Number of bedrooms:</b> 4"
+        }
+      }
+    }
+  },
+  "equipements": {
+    "title": "Equipment",
+    "list": {
+      "item1": "Towel rental",
+      "item2": "Wifi",
+      "item3": "Fireplace/stove",
+      "item4": "Private washing machine",
+      "item5": "Private dryer",
+      "item6": "Dishwasher",
+      "item7": "Microwave",
+      "item8": "Television",
+      "item9": "Beach games",
+      "item10": "Barbecue",
+      "item11": "Garden furniture",
+      "item12": "Deck chairs",
+      "item13": "Board games",
+      "item14": "Baby crib",
+      "item15": "High chair for baby",
+      "item16": "Bikes"
+    }
+  },
+  "photos": {
+    "title": "Photos"
+  },
+  "carte": {
+    "title": "Island of Batz",
+    "address": "Pors Alliou<br/> 29253 Island of Batz"
+  },
+  "tarifs": {
+    "left": {
+      "title": "Pricing",
+      "summer": "<b>Week July/August:</b> from €1400.00 (incl. tax)",
+      "beforeSummer": "<b>Week June/September + school holidays:</b> from €950.00 (incl. tax)"
+    },
+    "right": {
+      "title": "Information",
+      "start": "<b>Check-in time:</b> 5:00 PM",
+      "end": "<b>Check-out time:</b> 11:00 AM"
+    }
+  },
+  "testimonials": {
+    "title": "Testimonials"
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Pierre et Claire PHILIPPE",
+    "address": "16 rue Jean Moulin,<br/> 29120 Pont l'Abbé",
+    "phone": "02 98 82 33 67</br>06 42 72 08 37",
+    "email": "pierreclairephilippe@gmail.com"
   },
   "generics": {
-    "copyright": "Copyright © 2023 - Starter-template - All rights reserved",
-    "designed": "Designed and developed by "
+    "copyright": "Copyright © 2024 - Kerluskellik - All rights reserved",
+    "designed": "Designed and developed by ",
+    "back": "Back",
+    "more": "See more"
   },
   "common": {
     "loading": "Loading..."
+  },
+  "enums": {
+    "navbar": {
+      "HOME": "Kerluskellik",
+      "DESCRIPTION": "Description",
+      "AGENCEMENT": "Layout",
+      "EQUIPEMENTS": "Equipment",
+      "PHOTOS": "Photos",
+      "TARIFS": "Pricing",
+      "CARTE": "Map",
+      "CONTACT": "Contact",
+      "TESTIMONIALS": "Testimonials"
+    },
+    "filters": {
+      "ALL": "All",
+      "JARDIN": "Garden",
+      "RDC": "Ground Floor",
+      "ETAGE1": "Floor 1",
+      "ETAGE2": "Floor 2",
+      "CHAMBRE1": "Bedroom 1",
+      "CHAMBRE2": "Bedroom 2",
+      "CHAMBRE3": "Bedroom 3",
+      "CHAMBRE4": "Bedroom 4"
+    }
   }
 }

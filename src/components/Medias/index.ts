@@ -1,2 +1,1 @@
-export * from './Image';
-export * from './YoutubeVideo';
+export * from "./Image";

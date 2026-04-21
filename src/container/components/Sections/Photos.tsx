@@ -48,7 +48,9 @@ export function Photos(props: PhotosProps): React.JSX.Element {
         {medias.map((media, index) => (
           <ImageStyled
             key={media.src}
-            onClick={() => {
+            onClick={(e) => {
+              console.log("[DEBUG]", e);
+              e.stopPropagation();
               setIsMediaSwiperOpen(true);
               setIsNavClose(true);
               setCurrentImage(index);
@@ -109,7 +111,6 @@ const ImageStyled = tw(Image)`
   w-full
   object-contain
   md:hover:shadow
-  md:hover:scale-105
   transition-all
   bg-gray-100
 `;

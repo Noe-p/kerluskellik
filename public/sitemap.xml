@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- French Home -->
+  <url>
+    <loc>https://kerluskellik.com</loc>
+    <xhtml:link rel="alternate" hrefLang="en" href="https://kerluskellik.com/en" />
+    <xhtml:link rel="alternate" hrefLang="fr" href="https://kerluskellik.com" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <lastmod>2026-04-21</lastmod>
+  </url>
+
+  <!-- English Home -->
+  <url>
+    <loc>https://kerluskellik.com/en</loc>
+    <xhtml:link rel="alternate" hrefLang="en" href="https://kerluskellik.com/en" />
+    <xhtml:link rel="alternate" hrefLang="fr" href="https://kerluskellik.com" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <lastmod>2026-04-21</lastmod>
+  </url>
+
+  <!-- French Testimonials -->
+  <url>
+    <loc>https://kerluskellik.com/testimonials</loc>
+    <xhtml:link rel="alternate" hrefLang="en" href="https://kerluskellik.com/en/testimonials" />
+    <xhtml:link rel="alternate" hrefLang="fr" href="https://kerluskellik.com/testimonials" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-04-21</lastmod>
+  </url>
+
+  <!-- English Testimonials -->
+  <url>
+    <loc>https://kerluskellik.com/en/testimonials</loc>
+    <xhtml:link rel="alternate" hrefLang="en" href="https://kerluskellik.com/en/testimonials" />
+    <xhtml:link rel="alternate" hrefLang="fr" href="https://kerluskellik.com/testimonials" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-04-21</lastmod>
+  </url>
+</urlset>

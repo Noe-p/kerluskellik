@@ -16,7 +16,7 @@ export function Description(): React.JSX.Element {
           />
         </P16>
       </TextContainer>
-      <Image src="/images/maison.webP" alt="description" />
+      <Image loading="lazy" src="/images/maison.webP" alt="description" />
     </Main>
   );
 }

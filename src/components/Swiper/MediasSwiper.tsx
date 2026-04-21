@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import { Image, Modal } from "@/components";
+import { Modal } from "@/components";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -73,7 +73,7 @@ export function MediasSwiper(props: MediasSwiperProps): React.JSX.Element {
             <SwiperSlide key={media} onClick={() => setHideArrows(!hideArrows)}>
               <ImageContainer>
                 <ImageStyled>
-                  <Image className="object-contain" src={media} alt={media} />
+                  <img src={media} alt={media} className="object-contain" />
                 </ImageStyled>
               </ImageContainer>
             </SwiperSlide>
@@ -102,7 +102,7 @@ const Main = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 100;
 `;
 
@@ -110,17 +110,39 @@ const ReactSwiperStyled = styled(ReactSwiper)`
   width: 100%;
   height: 100%;
   position: relative;
+
+  .swiper-slide {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 const ImageContainer = styled.div`
   height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 
 const ImageStyled = styled.div`
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
 `;
 
 const CloseIconContainer = styled.div<{ $hide: boolean }>`
