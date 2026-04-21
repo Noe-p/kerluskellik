@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import { Modal } from "@/components";
+import { Image, Modal } from "@/components";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -73,7 +73,7 @@ export function MediasSwiper(props: MediasSwiperProps): React.JSX.Element {
             <SwiperSlide key={media} onClick={() => setHideArrows(!hideArrows)}>
               <ImageContainer>
                 <ImageStyled>
-                  <img src={media} alt={media} className="object-contain" />
+                  <Image src={media} alt={media} className="object-contain" />
                 </ImageStyled>
               </ImageContainer>
             </SwiperSlide>
