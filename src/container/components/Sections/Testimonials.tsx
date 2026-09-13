@@ -1,4 +1,4 @@
-import { H2, Link } from "@/components";
+import { H2 } from "@/components";
 import { testimonals } from "@/data";
 import { Testimonial } from "@/types/Testimonal";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
@@ -243,17 +243,4 @@ const PagerLabel = tw.span`
   text-primary/55
   text-xs
   tracking-[0.1em]
-`;
-
-const MoreLink = tw(Link)`
-  mt-10
-  text-goldDeep
-  text-xs
-  tracking-[0.14em]
-  uppercase
-  border-b
-  border-goldDeep
-  pb-0.5
-  hover:text-primary
-  hover:border-primary
 `;
