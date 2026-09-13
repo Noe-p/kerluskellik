@@ -148,6 +148,7 @@ module.exports = {
     extend: {
       colors: {
         white: "#fbf8ef",
+        cream: "#fbf8ef",
         green: {
           50: "#EBFFE5",
           100: "#DFFFD6",
@@ -168,7 +169,7 @@ module.exports = {
           900: "#141626",
         },
         primary: {
-          DEFAULT: "#0d1637",
+          DEFAULT: "#0F1B2E",
           50: "#ebf7ff",
           100: "#dbeeff",
           200: "#bedfff",
@@ -178,11 +179,13 @@ module.exports = {
           600: "#2d5bfe",
           700: "#2147e1",
           800: "#1e3fb5",
-          900: "#213b8e",
-          950: "#0d1637",
+          900: "#16253C",
+          950: "#0F1B2E",
         },
 
-        secondary: "#EBA500",
+        secondary: "#C7A05C",
+        goldDeep: "#7A5E2E",
+        navySoft: "#16253C",
         error: {
           25: "#FDDEDF",
           50: "#FCCBCD",
@@ -224,10 +227,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        mono: ["Monda"],
-        text: ["Great Vibes"],
-        title: ["Lobster"],
-        sanchez: ["Sanchez"],
+        mono: ["var(--font-outfit)", ...defaultTheme.fontFamily.sans],
+        text: ["var(--font-playfair)", "serif"],
+        title: ["var(--font-playfair)", "serif"],
+        sanchez: ["var(--font-outfit)", ...defaultTheme.fontFamily.sans],
       },
       minWidth: { ...sizesList },
       minHeight: { ...sizesList },

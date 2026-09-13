@@ -8,38 +8,81 @@ export function Description(): React.JSX.Element {
   return (
     <Main id={NAVBAR_LINKS.DESCRIPTION}>
       <TextContainer>
-        <H2>{t("description.title")}</H2>
-        <P16 className="mt-5">
+        <Eyebrow>{t("description.title")}</Eyebrow>
+        <Rule />
+        <Heading>{t("description.heading")}</Heading>
+        <Content className="mt-5">
           <Trans
             i18nKey="description.content"
             components={{ br: <br key="br-1" /> }}
           />
-        </P16>
+        </Content>
       </TextContainer>
-      <Image loading="lazy" src="/images/maison.webP" alt="description" />
+      <Frame>
+        <Image
+          fill
+          objectFit="cover"
+          className="rounded-none"
+          loading="lazy"
+          src="/images/rdc/rdc-6.webP"
+          alt="Une maison de capitaine"
+        />
+      </Frame>
     </Main>
   );
 }
 
 const Main = tw(Grid2)`
-  md:gap-15
-  md:py-20
+  md:gap-16
+  py-16 md:py-24
   justify-center
   items-center
   px-5 md:px-10
-  pb-20
 `;
 
 const TextContainer = tw.div`
   flex
   flex-col
-  items-center
-  justify-center
   h-full
   w-full
-  md:border
-  border-primary
-  md:p-10
-  rounded-lg
   h-fit
+`;
+
+const Eyebrow = tw.p`
+  font-sanchez
+  text-goldDeep
+  text-xs
+  font-medium
+  tracking-[0.22em]
+  uppercase
+`;
+
+const Rule = tw.div`
+  w-14
+  h-px
+  bg-goldDeep
+  my-5
+`;
+
+const Heading = tw(H2)`
+  text-primary
+  text-3xl
+  md:text-4xl
+  leading-tight
+`;
+
+const Content = tw(P16)`
+  font-light
+  leading-relaxed
+`;
+
+const Frame = tw.div`
+  relative
+  w-full
+  h-80
+  md:h-120
+  border
+  border-goldDeep
+  p-3
+  md:p-4
 `;

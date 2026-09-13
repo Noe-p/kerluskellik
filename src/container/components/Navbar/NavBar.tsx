@@ -78,12 +78,11 @@ export function NavBar(props: NavBarProps): React.JSX.Element {
       <Content>
         <Left>
           <LogoContainer onClick={() => scrollTo(NAVBAR_LINKS.HOME)}>
-            <TextNavigation
-              className='text-base'
+            <LogoText
               $selected={isMobile || selectedLink === NAVBAR_LINKS.HOME}
             >
               {t(`enums.navbar.${NAVBAR_LINKS.HOME}`)}
-            </TextNavigation>
+            </LogoText>
           </LogoContainer>
         </Left>
         {!isMobile ? (
@@ -180,17 +179,25 @@ const LogoContainer = tw.div`
 
 const TextNavigation = tw(P14)<{ $selected?: boolean }>`
   uppercase
-  ${(props) => (props.$selected ? 'opacity-100' : 'opacity-50')}
-  hover:text-black
+  tracking-[0.08em]
+  ${(props) => (props.$selected ? 'opacity-100' : 'opacity-60')}
+  hover:text-secondary
   transition-all
   duration-300
   cursor-pointer
 
   ${(props) =>
     props.$selected
-      ? 'border-b-2 border-black'
+      ? 'border-b-2 border-secondary'
       : 'border-b-2 border-transparent'}
-  hover:border-black
+  hover:border-secondary
+`;
+
+const LogoText = tw(TextNavigation)`
+  font-title
+  normal-case
+  text-lg
+  tracking-normal
 `;
 
 const Menu = tw.div<{ $isOpen: boolean }>`
@@ -212,7 +219,8 @@ const Menu = tw.div<{ $isOpen: boolean }>`
 
 const MenuLink = tw(P24)<{ $selected?: boolean }>`
   uppercase
-  ${(props) => (props.$selected ? 'text-black' : 'text-gray-300')}
+  font-title
+  ${(props) => (props.$selected ? 'text-primary' : 'text-primary/30')}
   m-4
   cursor-pointer
   text-center

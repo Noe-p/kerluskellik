@@ -2,6 +2,7 @@ import { Layout } from '@/components';
 import { Header } from '@/container/components';
 import { useScroll } from '@/hooks/useScroll';
 import { useState } from 'react';
+import { Stats } from '../components/Sections/Stats';
 import { Description } from '../components/Sections/Description';
 import { Agencement } from '../components/Sections/Agencement';
 import { Equipements } from '../components/Sections/Equipements';
@@ -18,6 +19,7 @@ export function HomePage(): React.JSX.Element {
   return (
     <Layout isNavClose={isNavClose || scrollY < 100}>
       <Header />
+      <Stats />
       <Description />
       <Agencement />
       <Equipements />

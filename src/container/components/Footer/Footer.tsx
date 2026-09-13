@@ -14,6 +14,8 @@ export function Footer(props: FooterProps): React.JSX.Element {
 
   return (
     <Main id={NAVBAR_LINKS.CONTACT} className={className}>
+      <Wordmark>{t('home.name')}</Wordmark>
+      <Rule />
       <InfosContainer>
         <Title>{t('contact.title')}</Title>
         <P16 className='mb-5 text-white'>{t('contact.name')}</P16>
@@ -49,6 +51,21 @@ const Main = tw.div`
   bg-primary
   w-full
   flex-col
+  pt-16
+`;
+
+const Wordmark = tw.p`
+  font-title
+  font-bold
+  text-white
+  text-2xl
+`;
+
+const Rule = tw.div`
+  w-14
+  h-px
+  bg-secondary
+  my-6
 `;
 
 const Title = tw(H2)`

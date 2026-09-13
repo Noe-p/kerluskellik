@@ -6,14 +6,6 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="icon" href="favicon.png" />
-
-          <link
-            rel="preload"
-            as="font"
-            href="/fonts/great-vibes/GreatVibes-Regular.otf"
-            type="font/otf"
-            crossOrigin="anonymous"
-          />
         </Head>
         <body>
           <Main />

@@ -2,27 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* FONTS */
-@import url("../../../public/fonts/Monda/stylesheet.css");
-
-@font-face {
-  font-family: "Great Vibes";
-  src: url("../../../public/fonts/great-vibes/GreatVibes-Regular.otf");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Lobster";
-  src: url("../../../public/fonts/lobster/Lobster.otf");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Sanchez";
-  src: url("../../../public/fonts/Sanchez/Sanchez-Regular.ttf");
-  font-display: swap;
-}
-
 html,
 body {
   /* overscroll-behavior: none; */
@@ -67,27 +46,6 @@ body {
   }
 }
 
-@keyframes bateau {
-  0% {
-    top: 0vw;
-    left: 50vw;
-    transform: rotate(0deg);
-  }
-
-  65% {
-    transform: rotate(30deg);
-    top: -13vw;
-    left: 8vw;
-  }
-
-  100% {
-    /* Modification ici */
-    transform: rotate(90deg);
-    top: -17.5vw;
-    left: 8vw;
-  }
-}
-
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
 }
@@ -95,16 +53,4 @@ body {
 .animate-fade-in-up-delay {
   animation: fadeInUp 0.6s ease-out 0.1s forwards;
   opacity: 0;
-}
-
-.bateau {
-  position: relative;
-  top: 0vw;
-  left: 50vw;
-  width: 5vw;
-  transform: rotate(90deg);
-  animation-name: bateau;
-  animation-duration: 8s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
 }

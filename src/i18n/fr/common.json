@@ -5,16 +5,28 @@
     "description": "Kerluskellik : location de maison sur l'île de Batz avec vue mer. 4 chambres, 9 personnes. Maison authentique, jardin clos, 50m plage. Séjour vacances Bretagne.",
     "keywords": "location maison île de batz, location vacances batz, maison de location bretagne, île de batz location, kerluskellik, maison vue mer batz, gîte île de batz, location 9 personnes batz"
   },
+  "stats": {
+    "travelers": "Voyageurs",
+    "rooms": "Chambres",
+    "beach": "De la plage",
+    "exposure": "Exposition",
+    "exposureValue": "Sud"
+  },
   "home": {
     "name": "Kerluskellik",
-    "subTitle": "“Une maison de caractère”"
+    "eyebrow": "Île-de-Batz · Bretagne",
+    "subTitle": "« Une maison de caractère »",
+    "hook": "Une authentique maison de capitaine au long cours, face à la mer.",
+    "cta": "Demander les disponibilités"
   },
   "description": {
     "title": "Description",
-    "content": "Située face à la mer, cette magnifique maison de caractère, exposée Sud est une maison authentique de capitaine au long cours. Elle se situe à l’île de Batz, vue sur mer de toutes les pièces. Entourée d'un jardin clos, elle est située à 50 m de la plage et à 5 min du débarcadère.<br/><br/>Tout y est propice au repos, lecture devant un bon feu de cheminée, jeux des enfants dans le jardin ou sur la plage en toute tranquillité, ballade sur la côte sauvage, nombreux jeux de société."
+    "heading": "Une maison de capitaine, face à la mer",
+    "content": "Face à la mer, cette magnifique demeure de caractère, exposée Sud, est une authentique maison de capitaine au long cours, sur l'Île-de-Batz. Chaque pièce s'ouvre sur la mer, et le jardin clos qui l'entoure mène à la plage en 50 m, à 5 min du débarcadère.<br/><br/>Tout y est propice au repos : lecture devant un bon feu de cheminée, jeux d'enfants dans le jardin ou sur la plage en toute tranquillité, balades sur la côte sauvage, longues parties de jeux de société."
   },
   "agencement": {
     "title": "Agencement",
+    "heading": "Quatre chambres, une vue sur mer depuis chaque étage",
     "items": {
       "item1": {
         "title": "Rez-de-chaussée",
@@ -23,16 +35,16 @@
       "item2": {
         "title": "Etage 1",
         "list": {
-          "item1": "1 chambre avec 1 lit double (140cm)",
-          "item2": "1 chambre avec 1 lit double (120cm) + balcon",
-          "item3": "1 chambre avec 1 lit double (140cm) + 2 lits simples (80cm)",
+          "item1": "1 chambre avec 1 lit double (140 cm)",
+          "item2": "1 chambre avec 1 lit double (120 cm) + balcon",
+          "item3": "1 chambre avec 1 lit double (140 cm) + 2 lits simples (80 cm)",
           "item4": "1 salle de bain avec 1 WC"
         }
       },
       "item3": {
         "title": "Etage 2",
         "list": {
-          "item1": "1 chambre avec 1 lit double (140cm)",
+          "item1": "1 chambre avec 1 lit double (140 cm)",
           "item2": "Lavabo"
         }
       },
@@ -47,6 +59,7 @@
   },
   "equipements": {
     "title": "Équipements",
+    "heading": "Tout est à bord",
     "list": {
       "item1": "Location de linge de toilette",
       "item2": "Wifi",
@@ -56,7 +69,7 @@
       "item6": "Lave-vaisselle",
       "item7": "Micro-ondes",
       "item8": "Télévision",
-      "item9": "Jeux de plages",
+      "item9": "Jeux de plage",
       "item10": "Barbecue",
       "item11": "Salon de jardin",
       "item12": "Transats",
@@ -67,26 +80,31 @@
     }
   },
   "photos": {
-    "title": "Les photos"
+    "title": "Les photos",
+    "heading": "La maison en images"
   },
   "carte": {
     "title": "Île-de-Batz",
+    "heading": "Pors Alliou, Île-de-Batz",
+    "hook": "À l'abri du vent, à 5 minutes du débarcadère, la maison regarde le large depuis la pointe de l'île.",
     "address": "Pors Alliou<br/> 29253 Île-de-Batz"
   },
   "tarifs": {
-    "left": {
-      "title": "Tarifs",
-      "summer": "<b>Semaine Juillet/Aout :</b> à partir de 1400,00€ (TTC)",
-      "beforeSummer": "<b>Semaine Juin/Septembre + Vacances scolaires :</b> à partir de 950,00€ (TTC)"
+    "title": "Tarifs",
+    "infoTitle": "Informations",
+    "summer": { "label": "Semaine Juillet / Août", "value": "1400 € TTC" },
+    "beforeSummer": {
+      "label": "Semaine Juin / Septembre + vacances scolaires",
+      "value": "1050 € TTC"
     },
-    "right": {
-      "title": "Informations",
-      "start": "<b>Horaire d'arrivée :</b> 17h00",
-      "end": "<b>Horaire de départ :</b> 11h00"
-    }
+    "start": { "label": "Horaire d'arrivée", "value": "17h00" },
+    "end": { "label": "Horaire de départ", "value": "11h00" }
   },
   "testimonials": {
-    "title": "Les témoignages"
+    "title": "Les témoignages",
+    "heading": "Le journal de bord",
+    "previous": "Page précédente",
+    "next": "Page suivante"
   },
   "contact": {
     "title": "Contact",
@@ -96,10 +114,11 @@
     "email": "pierreclairephilippe@gmail.com"
   },
   "generics": {
-    "copyright": "Copyright © 2024 - Kerluskellik - Tous droits réservés",
+    "copyright": "Copyright © 2026 - Kerluskellik - Tous droits réservés",
     "designed": "Conçu et développé par ",
     "back": "Retour",
-    "more": "En voir plus"
+    "more": "En voir plus",
+    "discover": "Découvrir"
   },
   "common": {
     "loading": "Loading..."

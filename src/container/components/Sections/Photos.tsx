@@ -1,12 +1,4 @@
-import {
-  ColCenter,
-  Grid3,
-  H2,
-  Image,
-  MediasSwiper,
-  P18,
-  Row,
-} from "@/components";
+import { ColCenter, Grid3, H2, Image, MediasSwiper } from "@/components";
 import { FILTERS, JARDIN, PHOTOS } from "@/data/photos";
 import { Photo } from "@/types";
 import { useTranslation } from "next-i18next";
@@ -32,32 +24,38 @@ export function Photos(props: PhotosProps): React.JSX.Element {
 
   return (
     <Main id={NAVBAR_LINKS.PHOTOS}>
-      <H2 className="mb-5">{t("photos.title")}</H2>
+      <Eyebrow>{t("photos.title")}</Eyebrow>
+      <Rule />
+      <Heading>{t("photos.heading")}</Heading>
       <FilterContainer>
         {Object.values(FILTERS).map((filter) => (
-          <Filter
+          <FilterPill
             onClick={() => setFilterSelected(filter)}
             $selected={filterSelected === filter}
             key={filter}
           >
             {t(`enums.filters.${filter}`)}
-          </Filter>
+          </FilterPill>
         ))}
       </FilterContainer>
       <MediaContainer>
         {medias.map((media, index) => (
-          <ImageStyled
-            key={media.src}
-            onClick={(e) => {
-              console.log("[DEBUG]", e);
-              e.stopPropagation();
-              setIsMediaSwiperOpen(true);
-              setIsNavClose(true);
-              setCurrentImage(index);
-            }}
-            src={media.src}
-            alt="media"
-          />
+          <PlateFrame key={media.src}>
+            <Pic
+              onClick={(e: React.MouseEvent) => {
+                e.stopPropagation();
+                setIsMediaSwiperOpen(true);
+                setIsNavClose(true);
+                setCurrentImage(index);
+              }}
+            >
+              <Image fill objectFit="cover" src={media.src} alt="media" />
+            </Pic>
+            <Caption>
+              <Tag>{t(`enums.filters.${filterSelected}`)}</Tag>
+              <PlateNumber>{`N° ${String(index + 1).padStart(2, "0")}`}</PlateNumber>
+            </Caption>
+          </PlateFrame>
         ))}
       </MediaContainer>
       <MediasSwiper
@@ -77,40 +75,102 @@ const Main = tw(ColCenter)`
   w-full
   px-5 md:px-10
   justify-center
-  pb-20
+  pb-20 md:pb-28
+  pt-20 md:pt-28
   min-h-screen
 `;
 
-const FilterContainer = tw(Row)`
-  gap-2 md:gap-5
-  flex-wrap
+const Eyebrow = tw.p`
+  font-sanchez
+  text-goldDeep
+  text-xs
+  font-medium
+  tracking-[0.22em]
+  uppercase
 `;
 
-const Filter = tw(P18)<{ $selected: boolean }>`
+const Rule = tw.div`
+  w-14
+  h-px
+  bg-goldDeep
+  my-5
+`;
+
+const Heading = tw(H2)`
   text-primary
+  text-3xl
+  md:text-4xl
+  mb-8
+`;
+
+const FilterContainer = tw.div`
+  flex
+  gap-2 md:gap-3
+  flex-wrap
+  justify-center
+`;
+
+const FilterPill = tw.button<{ $selected: boolean }>`
+  font-sanchez
+  text-[11px]
+  tracking-[0.12em]
+  uppercase
   cursor-pointer
   border
-  border-primary
-  rounded
-  px-3 py-1
-  ${({ $selected }) => $selected && "bg-primary text-white"}
+  border-primary/25
+  px-4 py-2.5
   transition-all
-  hover:bg-primary
-  hover:text-white
-  hover:shadow
-  hover:scale-105
+  ${(props) =>
+    props.$selected
+      ? "bg-primary text-cream border-primary"
+      : "text-primary"}
+  hover:border-primary
 `;
 
 const MediaContainer = tw(Grid3)`
-  my-5
+  mt-10
   w-full
+  max-w-300
+  gap-x-7
+  gap-y-8
 `;
 
-const ImageStyled = tw(Image)`
-  cursor-pointer
+const PlateFrame = tw.div`
+  bg-[#FBF8F0]
+  border
+  border-secondary
+  p-3.5
+`;
+
+const Pic = tw.div`
+  relative
   w-full
-  object-contain
-  md:hover:shadow
-  transition-all
-  bg-gray-100
+  h-64
+  cursor-pointer
+  bg-primary/5
+`;
+
+const Caption = tw.div`
+  flex
+  items-baseline
+  justify-between
+  pt-3.5
+  mt-3.5
+  border-t
+  border-primary/10
+`;
+
+const Tag = tw.span`
+  font-sanchez
+  text-goldDeep
+  text-[10px]
+  tracking-[0.14em]
+  uppercase
+`;
+
+const PlateNumber = tw.span`
+  font-title
+  italic
+  text-primary/40
+  text-xs
 `;
