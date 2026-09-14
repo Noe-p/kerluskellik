@@ -81,7 +81,9 @@
   },
   "photos": {
     "title": "Photos",
-    "heading": "The house in pictures"
+    "heading": "The house in pictures",
+    "showAll": "See all {{count}} photos",
+    "close": "Close"
   },
   "carte": {
     "title": "Island of Batz",

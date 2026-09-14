@@ -23,7 +23,6 @@ interface MediasSwiperProps {
 
 export function MediasSwiper(props: MediasSwiperProps): React.JSX.Element {
   const { className, isOpen, setIsOpen, medias, currentImage = 0 } = props;
-  const [swiper, setSwiper] = useState<SwiperCore>();
   const [hideArrows, setHideArrows] = useState(false);
   const [currentMedia, setCurrentMedia] = useState(currentImage);
 
@@ -33,7 +32,12 @@ export function MediasSwiper(props: MediasSwiperProps): React.JSX.Element {
   const navigationNextRef = React.useRef(null);
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={setIsOpen} className={className}>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={setIsOpen}
+      className={className}
+      overlayClassName="!z-[110]"
+    >
       <Main>
         <CloseIconContainer onClick={setIsOpen} $hide={hideArrows}>
           <CloseIcon />
@@ -49,7 +53,6 @@ export function MediasSwiper(props: MediasSwiperProps): React.JSX.Element {
           $hide={hideArrows}
         />
         <ReactSwiperStyled
-          onSwiper={(swiper) => setSwiper(swiper)}
           navigation={{
             prevEl: "prev",
             nextEl: "next",
@@ -81,16 +84,7 @@ export function MediasSwiper(props: MediasSwiperProps): React.JSX.Element {
         </ReactSwiperStyled>
       </Main>
       <PaginationContainer $hide={hideArrows}>
-        {medias.map((_, index) => (
-          <PaginationButton
-            key={index}
-            $active={index === currentMedia}
-            onClick={() => {
-              swiper?.slideTo(index);
-              setCurrentMedia(index);
-            }}
-          />
-        ))}
+        <PaginationCounter>{`${currentMedia + 1} / ${medias.length}`}</PaginationCounter>
       </PaginationContainer>
     </Modal>
   );
@@ -228,38 +222,26 @@ const ArrowRightIconStyled = styled(ChevronRightIcon)<{ $hide: boolean }>`
 const PaginationContainer = styled.div<{ $hide: boolean }>`
   display: flex;
   justify-content: center;
-  margin-top: 50px;
   position: absolute;
-  bottom: 60px;
+  bottom: 40px;
   z-index: 100;
   left: 50%;
   transform: translateX(-50%);
   transition: opacity 0.3s ease-in-out;
   opacity: ${({ $hide }) => ($hide ? 0 : 1)};
-  width: 50%;
-  flex-wrap: wrap;
-
-  &:hover {
-    opacity: 1;
-  }
 
   @media (max-width: 768px) {
-    bottom: 110px;
-    width: 80%;
-    opacity: ${({ $hide }) => ($hide ? 0 : 1)};
+    bottom: 90px;
   }
 `;
 
-const PaginationButton = styled.button<{ $active: boolean }>`
-  background-color: ${({ $active }) => ($active ? "black" : "white")};
-  width: 40px;
-  height: 6px;
-  border: solid 1px ${({ $active }) => ($active ? "white" : "black")};
-  margin: 2px 5px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  border-radius: 2px;
-
-  @media (max-width: 768px) {
-  }
+const PaginationCounter = styled.div`
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background-color: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
 `;

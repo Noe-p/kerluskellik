@@ -1,6 +1,7 @@
 import { Photo } from '@/types';
 
 export enum FILTERS {
+  ALL = 'ALL',
   JARDIN = 'JARDIN',
   RDC = 'RDC',
   ETAGE1 = 'ETAGE1',

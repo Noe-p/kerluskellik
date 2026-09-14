@@ -12,7 +12,10 @@ export function Modal(props: ModalProps): React.JSX.Element {
 
   const customStyles = {
     overlay: {
+      position: 'fixed' as const,
+      inset: 0,
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      zIndex: 100,
     },
     content: {
       top: '50%',

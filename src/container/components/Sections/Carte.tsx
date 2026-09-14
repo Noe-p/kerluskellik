@@ -95,8 +95,7 @@ const Heading = tw.h2`
   font-title
   font-semibold
   text-cream
-  text-2xl
-  md:text-3xl
+  text-3xl
   leading-tight
 `;
 

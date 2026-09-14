@@ -120,8 +120,7 @@ const Rule = tw.div`
 
 const Heading = tw(H2)`
   text-cream
-  text-2xl
-  md:text-3xl
+  text-3xl
   leading-tight
   text-center
   md:text-left

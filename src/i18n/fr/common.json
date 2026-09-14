@@ -81,7 +81,9 @@
   },
   "photos": {
     "title": "Les photos",
-    "heading": "La maison en images"
+    "heading": "La maison en images",
+    "showAll": "Voir les {{count}} photos",
+    "close": "Fermer"
   },
   "carte": {
     "title": "Île-de-Batz",

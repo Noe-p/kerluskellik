@@ -69,9 +69,11 @@ const Rule = tw.div`
 
 const Row = tw.div`
   flex
-  items-baseline
+  flex-col
+  md:flex-row
+  md:items-baseline
   justify-between
-  gap-6
+  gap-1.5 md:gap-6
   py-5
   border-b
   border-primary/10
@@ -84,7 +86,7 @@ const Label = tw.p`
   text-[11.5px]
   tracking-[0.08em]
   uppercase
-  max-w-58
+  md:max-w-58
   leading-relaxed
 `;
 
@@ -92,6 +94,7 @@ const Value = tw.p`
   font-title
   font-semibold
   text-primary
-  text-2xl
+  text-lg
+  md:text-2xl
   whitespace-nowrap
 `;

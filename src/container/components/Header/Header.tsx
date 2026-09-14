@@ -1,8 +1,9 @@
+import { Image } from "@/components/Medias/Image";
 import { H1, P16, P18 } from "@/components/Texts";
 import { scrollTo } from "@/services/utils";
 import { ChevronDoubleDownIcon } from "@heroicons/react/24/solid";
 import { useTranslation } from "next-i18next";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 import { NAVBAR_LINKS } from "../Navbar";
 
@@ -10,15 +11,53 @@ interface HeaderProps {
   className?: string;
 }
 
+interface NavigatorConnection {
+  saveData?: boolean;
+  effectiveType?: string;
+}
+
 export function Header(props: HeaderProps): React.JSX.Element {
   const { className } = props;
   const { t } = useTranslation();
+  const [canAutoplayVideo, setCanAutoplayVideo] = useState(true);
+
+  useEffect(() => {
+    const connection = (
+      navigator as Navigator & { connection?: NavigatorConnection }
+    ).connection;
+    const isSlowNetwork =
+      !!connection?.saveData ||
+      !!connection?.effectiveType?.includes("2g");
+
+    if (isSlowNetwork) {
+      setCanAutoplayVideo(false);
+    }
+  }, []);
 
   return (
     <Main id={NAVBAR_LINKS.HOME} className={className}>
-      <VideoBackground autoPlay loop muted playsInline>
-        <source src="/videos/header.mp4" type="video/mp4" />
-      </VideoBackground>
+      <PosterWrap>
+        <Image
+          src="/images/header-poster.jpg"
+          alt=""
+          fill
+          priority
+          objectFit="cover"
+          sizes="100vw"
+        />
+      </PosterWrap>
+      {canAutoplayVideo && (
+        <VideoBackground
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster="/images/header-poster.jpg"
+        >
+          <source src="/videos/header.mp4" type="video/mp4" />
+        </VideoBackground>
+      )}
       <Scrim />
       <Content>
         <Plate>
@@ -83,6 +122,12 @@ const Main = tw.div`
   h-screen
   w-screen
   overflow-hidden
+  z-0
+`;
+
+const PosterWrap = tw.div`
+  absolute
+  inset-0
   z-0
 `;
 

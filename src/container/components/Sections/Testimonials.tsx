@@ -168,9 +168,9 @@ const Page = tw.div`
 
 const EntryRow = tw.div`
   grid
-  grid-cols-[64px_1fr]
+  grid-cols-1
   md:grid-cols-[84px_1fr]
-  gap-5
+  gap-2 md:gap-5
   py-5
   border-b
   border-primary/10
