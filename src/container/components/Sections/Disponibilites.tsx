@@ -17,10 +17,11 @@ import {
 } from 'date-fns';
 import { enUS, fr } from 'date-fns/locale';
 import type { Locale } from 'date-fns/locale/types';
-import { Check, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight, Loader2, X } from 'lucide-react';
 import { useTranslation } from 'next-i18next';
 import { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 import tw from 'tailwind-styled-components';
+import { CompassIcon, Modal, Reveal } from '@/components';
 import { NAVBAR_LINKS } from '../Navbar';
 
 interface BookedRange {
@@ -231,21 +232,23 @@ export function Disponibilites(): React.JSX.Element {
 
   return (
     <Main id={NAVBAR_LINKS.DISPONIBILITES}>
-      <HeaderBlock>
-        <CompassBadge>
-          <CompassIcon />
-        </CompassBadge>
-        <Eyebrow>{t('disponibilites.title')}</Eyebrow>
-        <Rule />
-        <Hook>{t('disponibilites.hook')}</Hook>
-      </HeaderBlock>
+      <Reveal className="flex flex-col items-center">
+        <HeaderBlock>
+          <CompassBadge>
+            <CompassIcon size={22} />
+          </CompassBadge>
+          <Eyebrow>{t('disponibilites.title')}</Eyebrow>
+          <Rule />
+          <Hook>{t('disponibilites.hook')}</Hook>
+        </HeaderBlock>
+      </Reveal>
 
       {isLoading ? (
         <Unavailable>{t('common.loading')}</Unavailable>
       ) : !configured ? (
         <Unavailable>{t('disponibilites.unavailable')}</Unavailable>
       ) : (
-        <>
+        <Reveal delay={0.1} className="flex flex-col items-center w-full">
           <StatusBar>
             <HintGroup>
               {selectionHint && <SelectionHint>{selectionHint}</SelectionHint>}
@@ -319,11 +322,20 @@ export function Disponibilites(): React.JSX.Element {
             </LegendItem>
           </Legend>
 
-          {warning && <Warning>{warning}</Warning>}
+          <Modal
+            isOpen={Boolean(selection.start && selection.end)}
+            onRequestClose={resetSelection}
+            contentClassName="relative !w-[92vw] sm:!w-[32rem] !max-w-[32rem] !max-h-[85vh] overflow-y-auto !rounded-2xl !bg-cream !p-6 sm:!p-10"
+          >
+            <ModalCloseButton
+              type="button"
+              onClick={resetSelection}
+              aria-label={t('common.close')}
+            >
+              <X size={18} />
+            </ModalCloseButton>
 
-          {selection.start &&
-            selection.end &&
-            (status === 'success' ? (
+            {status === 'success' ? (
               <SuccessPanel>
                 <SuccessIconWrap>
                   <Check size={20} />
@@ -446,8 +458,9 @@ export function Disponibilites(): React.JSX.Element {
                   </>
                 )}
               </FormPanel>
-            ))}
-        </>
+            )}
+          </Modal>
+        </Reveal>
       )}
     </Main>
   );
@@ -541,16 +554,6 @@ function MonthGrid(props: MonthGridProps): React.JSX.Element {
   );
 }
 
-function CompassIcon(): React.JSX.Element {
-  return (
-    <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-      <circle cx="14" cy="14" r="11.5" stroke="currentColor" strokeWidth="1" />
-      <path d="M14 3V7M14 21V25M3 14H7M21 14H25" stroke="currentColor" strokeWidth="1" />
-      <path d="M14 8.5L16.2 14L14 19.5L11.8 14Z" fill="currentColor" />
-    </svg>
-  );
-}
-
 const Main = tw.div`
   flex
   flex-col
@@ -583,7 +586,7 @@ const CompassBadge = tw.div`
   mb-4
 `;
 
-const Eyebrow = tw.p`
+const Eyebrow = tw.h2`
   font-sanchez
   text-goldDeep
   text-xs
@@ -756,7 +759,7 @@ const Day = tw.button<DayProps>`
   ${(props) => (props.$inMonth ? 'opacity-100' : 'opacity-0 pointer-events-none')}
   ${(props) =>
     props.$isBooked
-      ? 'bg-primary border-primary text-white cursor-not-allowed'
+      ? 'bg-primary/10 border-primary/15 text-primary/50 line-through decoration-primary/60 cursor-not-allowed'
       : props.$isFilled
         ? 'bg-goldDeep border-goldDeep text-white'
         : props.$isPreviewEdge
@@ -764,8 +767,8 @@ const Day = tw.button<DayProps>`
           : props.$isInRange
             ? 'bg-goldDeep/15 border-goldDeep/15 text-primary'
             : props.$isPast
-              ? 'border-primary/5 text-primary/25 cursor-not-allowed'
-              : 'border-primary/10 text-primary/80 cursor-pointer hover:border-goldDeep hover:bg-goldDeep/10'}
+              ? 'border-primary/5 text-primary/30 cursor-not-allowed'
+              : 'border-primary/20 text-primary cursor-pointer hover:border-goldDeep hover:bg-goldDeep/10'}
   ${(props) =>
     props.$isToday && !props.$isBooked && !props.$isFilled && !props.$isPreviewEdge
       ? 'ring-1 ring-goldDeep'
@@ -794,7 +797,7 @@ const Swatch = tw.div<{ $variant: 'booked' | 'selected' | 'free' }>`
   border-primary/20
   ${(props) =>
     props.$variant === 'booked'
-      ? 'bg-primary border-primary'
+      ? 'bg-primary/20 border-primary/35'
       : props.$variant === 'selected'
         ? 'bg-goldDeep border-goldDeep'
         : 'bg-transparent'}
@@ -823,16 +826,29 @@ const Warning = tw.p`
   max-w-md
 `;
 
+const ModalCloseButton = tw.button`
+  absolute
+  top-3 right-3
+  flex
+  items-center
+  justify-center
+  w-9 h-9
+  rounded-full
+  border
+  border-primary/15
+  text-primary
+  transition-colors
+  duration-300
+  hover:border-goldDeep
+  hover:text-goldDeep
+  z-10
+`;
+
 const FormPanel = tw.form`
   flex
   flex-col
   gap-6
   w-full
-  max-w-xl
-  mt-14
-  pt-10
-  border-t
-  border-primary/10
 `;
 
 const Summary = tw.div`
@@ -842,6 +858,7 @@ const Summary = tw.div`
   sm:items-end
   sm:justify-between
   gap-3
+  pr-10
 `;
 
 const SummaryDates = tw.p`
@@ -913,9 +930,9 @@ const ErrorText = tw.p`
 
 const HoneypotField = tw.input`
   absolute
-  -left-[9999px]
   w-px
   h-px
+  overflow-hidden
   opacity-0
   pointer-events-none
 `;
@@ -962,11 +979,6 @@ const SuccessPanel = tw.div`
   text-center
   gap-4
   w-full
-  max-w-xl
-  mt-14
-  pt-10
-  border-t
-  border-primary/10
 `;
 
 const SuccessIconWrap = tw.div`

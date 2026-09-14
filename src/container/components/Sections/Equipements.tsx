@@ -1,4 +1,5 @@
-import { ColCenter, Grid4, H2 } from "@/components";
+import { ColCenter, H2, Reveal, staggerChild, staggerParent } from "@/components";
+import { motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
 import tw from "tailwind-styled-components";
 import { NAVBAR_LINKS } from "../Navbar";
@@ -11,12 +12,20 @@ export function Equipements(): React.JSX.Element {
 
   return (
     <Main id={NAVBAR_LINKS.EQUIPEMENTS}>
-      <Eyebrow>{t("equipements.title")}</Eyebrow>
-      <Rule />
-      <Heading>{t("equipements.heading")}</Heading>
-      <ItemsGrid>
+      <Reveal className="flex flex-col items-center">
+        <Eyebrow>{t("equipements.title")}</Eyebrow>
+        <Rule />
+        <Heading>{t("equipements.heading")}</Heading>
+      </Reveal>
+      <ItemsGrid
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.15 }}
+        variants={staggerParent}
+        transition={{ staggerChildren: 0.05, delayChildren: 0.02 }}
+      >
         {items.map((item) => (
-          <ListItem key={item}>
+          <ListItem key={item} variants={staggerChild}>
             <Dot />
             <Label>{item}</Label>
           </ListItem>
@@ -56,14 +65,20 @@ const Heading = tw(H2)`
   md:text-4xl
 `;
 
-const ItemsGrid = tw(Grid4)`
+const ItemsGrid = tw(motion.div)`
+  grid
+  md:grid-cols-4
+  grid-cols-1
+  gap-y-5
+  md:gap-5
+  w-full
   max-w-300
   mt-14
   gap-x-8
   gap-y-0
 `;
 
-const ListItem = tw.div`
+const ListItem = tw(motion.div)`
   flex
   items-center
   gap-3

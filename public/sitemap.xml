@@ -3,41 +3,41 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <!-- French Home -->
   <url>
-    <loc>https://kerluskellik.com</loc>
-    <xhtml:link rel="alternate" hrefLang="en" href="https://kerluskellik.com/en" />
-    <xhtml:link rel="alternate" hrefLang="fr" href="https://kerluskellik.com" />
+    <loc>https://kerluskellik.fr</loc>
+    <xhtml:link rel="alternate" hrefLang="en" href="https://kerluskellik.fr/en" />
+    <xhtml:link rel="alternate" hrefLang="fr" href="https://kerluskellik.fr" />
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-09-14</lastmod>
   </url>
 
   <!-- English Home -->
   <url>
-    <loc>https://kerluskellik.com/en</loc>
-    <xhtml:link rel="alternate" hrefLang="en" href="https://kerluskellik.com/en" />
-    <xhtml:link rel="alternate" hrefLang="fr" href="https://kerluskellik.com" />
+    <loc>https://kerluskellik.fr/en</loc>
+    <xhtml:link rel="alternate" hrefLang="en" href="https://kerluskellik.fr/en" />
+    <xhtml:link rel="alternate" hrefLang="fr" href="https://kerluskellik.fr" />
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-09-14</lastmod>
   </url>
 
   <!-- French Testimonials -->
   <url>
-    <loc>https://kerluskellik.com/testimonials</loc>
-    <xhtml:link rel="alternate" hrefLang="en" href="https://kerluskellik.com/en/testimonials" />
-    <xhtml:link rel="alternate" hrefLang="fr" href="https://kerluskellik.com/testimonials" />
+    <loc>https://kerluskellik.fr/testimonials</loc>
+    <xhtml:link rel="alternate" hrefLang="en" href="https://kerluskellik.fr/en/testimonials" />
+    <xhtml:link rel="alternate" hrefLang="fr" href="https://kerluskellik.fr/testimonials" />
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-09-14</lastmod>
   </url>
 
   <!-- English Testimonials -->
   <url>
-    <loc>https://kerluskellik.com/en/testimonials</loc>
-    <xhtml:link rel="alternate" hrefLang="en" href="https://kerluskellik.com/en/testimonials" />
-    <xhtml:link rel="alternate" hrefLang="fr" href="https://kerluskellik.com/testimonials" />
+    <loc>https://kerluskellik.fr/en/testimonials</loc>
+    <xhtml:link rel="alternate" hrefLang="en" href="https://kerluskellik.fr/en/testimonials" />
+    <xhtml:link rel="alternate" hrefLang="fr" href="https://kerluskellik.fr/testimonials" />
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-09-14</lastmod>
   </url>
 </urlset>

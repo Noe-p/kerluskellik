@@ -1,7 +1,9 @@
+import { CompassIcon } from "@/components/Icons";
 import { Image } from "@/components/Medias/Image";
 import { H1, P16, P18 } from "@/components/Texts";
 import { scrollTo } from "@/services/utils";
 import { ChevronDoubleDownIcon } from "@heroicons/react/24/solid";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
@@ -20,6 +22,9 @@ export function Header(props: HeaderProps): React.JSX.Element {
   const { className } = props;
   const { t } = useTranslation();
   const [canAutoplayVideo, setCanAutoplayVideo] = useState(true);
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+  const bgY = useTransform(scrollY, [0, 1000], [0, 180]);
 
   useEffect(() => {
     const connection = (
@@ -36,28 +41,38 @@ export function Header(props: HeaderProps): React.JSX.Element {
 
   return (
     <Main id={NAVBAR_LINKS.HOME} className={className}>
-      <PosterWrap>
-        <Image
-          src="/images/header-poster.jpg"
-          alt=""
-          fill
-          priority
-          objectFit="cover"
-          sizes="100vw"
-        />
-      </PosterWrap>
-      {canAutoplayVideo && (
-        <VideoBackground
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          poster="/images/header-poster.jpg"
-        >
-          <source src="/videos/header.mp4" type="video/mp4" />
-        </VideoBackground>
-      )}
+      <HeroBg
+        style={shouldReduceMotion ? undefined : { y: bgY }}
+        animate={shouldReduceMotion ? undefined : { scale: [1.08, 1.16, 1.08] }}
+        transition={
+          shouldReduceMotion
+            ? undefined
+            : { duration: 26, repeat: Infinity, ease: "easeInOut" }
+        }
+      >
+        <PosterWrap>
+          <Image
+            src="/images/header-poster.jpg"
+            alt=""
+            fill
+            priority
+            objectFit="cover"
+            sizes="100vw"
+          />
+        </PosterWrap>
+        {canAutoplayVideo && (
+          <VideoBackground
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            poster="/images/header-poster.jpg"
+          >
+            <source src="/videos/header.mp4" type="video/mp4" />
+          </VideoBackground>
+        )}
+      </HeroBg>
       <Scrim />
       <Content>
         <Plate>
@@ -82,20 +97,6 @@ export function Header(props: HeaderProps): React.JSX.Element {
         <SlideButton />
       </ScrollCue>
     </Main>
-  );
-}
-
-function CompassIcon(): React.JSX.Element {
-  return (
-    <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
-      <circle cx="14" cy="14" r="11.5" stroke="currentColor" strokeWidth="1" />
-      <path
-        d="M14 3V7M14 21V25M3 14H7M21 14H25"
-        stroke="currentColor"
-        strokeWidth="1"
-      />
-      <path d="M14 8.5L16.2 14L14 19.5L11.8 14Z" fill="currentColor" />
-    </svg>
   );
 }
 
@@ -125,10 +126,16 @@ const Main = tw.div`
   z-0
 `;
 
-const PosterWrap = tw.div`
+const HeroBg = tw(motion.div)`
   absolute
   inset-0
   z-0
+  will-change-transform
+`;
+
+const PosterWrap = tw.div`
+  absolute
+  inset-0
 `;
 
 const VideoBackground = tw.video`

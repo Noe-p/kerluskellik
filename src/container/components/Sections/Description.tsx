@@ -1,4 +1,4 @@
-import { Grid2, H2, Image, P16 } from "@/components";
+import { AnchorIcon, Grid2, H2, Image, ParallaxImage, P16, Reveal } from "@/components";
 import { Trans, useTranslation } from "next-i18next";
 import tw from "tailwind-styled-components";
 import { NAVBAR_LINKS } from "../Navbar";
@@ -7,27 +7,36 @@ export function Description(): React.JSX.Element {
   const { t } = useTranslation();
   return (
     <Main id={NAVBAR_LINKS.DESCRIPTION}>
-      <TextContainer>
-        <Eyebrow>{t("description.title")}</Eyebrow>
-        <Rule />
-        <Heading>{t("description.heading")}</Heading>
-        <Content className="mt-5">
-          <Trans
-            i18nKey="description.content"
-            components={{ br: <br key="br-1" /> }}
-          />
-        </Content>
-      </TextContainer>
-      <Frame>
-        <Image
-          fill
-          objectFit="cover"
-          className="rounded-none"
-          loading="lazy"
-          src="/images/rdc/rdc-6.webP"
-          alt="Une maison de capitaine"
-        />
-      </Frame>
+      <Reveal>
+        <TextContainer>
+          <IconBadge>
+            <AnchorIcon size={20} />
+          </IconBadge>
+          <Eyebrow>{t("description.title")}</Eyebrow>
+          <Rule />
+          <Heading>{t("description.heading")}</Heading>
+          <Content className="mt-5">
+            <Trans
+              i18nKey="description.content"
+              components={{ br: <br key="br-1" /> }}
+            />
+          </Content>
+        </TextContainer>
+      </Reveal>
+      <Reveal delay={0.15}>
+        <Frame>
+          <ParallaxImage distance={26}>
+            <Image
+              fill
+              objectFit="cover"
+              className="rounded-none"
+              loading="lazy"
+              src="/images/rdc/rdc-6.webP"
+              alt={t("description.imageAlt")}
+            />
+          </ParallaxImage>
+        </Frame>
+      </Reveal>
     </Main>
   );
 }
@@ -46,6 +55,18 @@ const TextContainer = tw.div`
   h-full
   w-full
   h-fit
+`;
+
+const IconBadge = tw.div`
+  flex
+  items-center
+  justify-center
+  w-11 h-11
+  rounded-full
+  border
+  border-goldDeep
+  text-goldDeep
+  mb-4
 `;
 
 const Eyebrow = tw.p`

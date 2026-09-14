@@ -12,7 +12,7 @@ Disallow: /.next
 Crawl-delay: 1
 
 # Sitemaps
-Sitemap: https://kerluskellik.com/sitemap.xml
+Sitemap: https://kerluskellik.fr/sitemap.xml
 
 # Specific rules for popular crawlers
 User-agent: Googlebot

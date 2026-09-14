@@ -1,4 +1,4 @@
-import { H2 } from "@/components";
+import { H2, Reveal } from "@/components";
 import { testimonals } from "@/data";
 import { Testimonial } from "@/types/Testimonal";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
@@ -51,29 +51,33 @@ export function Testimonials(): React.JSX.Element {
 
   return (
     <Main id={NAVBAR_LINKS.TESTIMONIALS}>
-      <Eyebrow>{t("testimonials.title")}</Eyebrow>
-      <Rule />
-      <Heading>{t("testimonials.heading")}</Heading>
-      <Logbook>
-        <Page className="md:border-r md:border-primary/15 md:[box-shadow:inset_-10px_0_16px_-14px_rgba(15,27,46,0.35)]">
-          {leftPage.map((testimonial) => (
-            <Entry key={testimonial.id} testimonial={testimonial} />
-          ))}
-          <PageNumber className="md:left-8">
-            {toRoman(spread * 2 + 1)}
-          </PageNumber>
-        </Page>
-        <Page className="md:[box-shadow:inset_10px_0_16px_-14px_rgba(15,27,46,0.35)]">
-          {rightPage.map((testimonial) => (
-            <Entry key={testimonial.id} testimonial={testimonial} />
-          ))}
-          {rightPage.length > 0 && (
-            <PageNumber className="md:right-8">
-              {toRoman(spread * 2 + 2)}
+      <Reveal className="flex flex-col items-center">
+        <Eyebrow>{t("testimonials.title")}</Eyebrow>
+        <Rule />
+        <Heading>{t("testimonials.heading")}</Heading>
+      </Reveal>
+      <Reveal delay={0.15} className="w-full flex justify-center">
+        <Logbook>
+          <Page className="md:border-r md:border-primary/15 md:[box-shadow:inset_-10px_0_16px_-14px_rgba(15,27,46,0.35)]">
+            {leftPage.map((testimonial) => (
+              <Entry key={testimonial.id} testimonial={testimonial} />
+            ))}
+            <PageNumber className="md:left-8">
+              {toRoman(spread * 2 + 1)}
             </PageNumber>
-          )}
-        </Page>
-      </Logbook>
+          </Page>
+          <Page className="md:[box-shadow:inset_10px_0_16px_-14px_rgba(15,27,46,0.35)]">
+            {rightPage.map((testimonial) => (
+              <Entry key={testimonial.id} testimonial={testimonial} />
+            ))}
+            {rightPage.length > 0 && (
+              <PageNumber className="md:right-8">
+                {toRoman(spread * 2 + 2)}
+              </PageNumber>
+            )}
+          </Page>
+        </Logbook>
+      </Reveal>
       {totalSpreads > 1 && (
         <Pager>
           <PagerButton

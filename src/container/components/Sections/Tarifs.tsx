@@ -1,3 +1,4 @@
+import { Reveal } from "@/components";
 import { useTranslation } from "next-i18next";
 import tw from "tailwind-styled-components";
 import { NAVBAR_LINKS } from "../Navbar";
@@ -6,30 +7,34 @@ export function Tarifs(): React.JSX.Element {
   const { t } = useTranslation();
   return (
     <Main id={NAVBAR_LINKS.TARIFS}>
-      <Col>
-        <Eyebrow>{t("tarifs.title")}</Eyebrow>
-        <Rule />
-        <Row>
-          <Label>{t("tarifs.summer.label")}</Label>
-          <Value>{t("tarifs.summer.value")}</Value>
-        </Row>
-        <Row>
-          <Label>{t("tarifs.beforeSummer.label")}</Label>
-          <Value>{t("tarifs.beforeSummer.value")}</Value>
-        </Row>
-      </Col>
-      <Col className="mt-14 md:mt-0">
-        <Eyebrow>{t("tarifs.infoTitle")}</Eyebrow>
-        <Rule />
-        <Row>
-          <Label>{t("tarifs.start.label")}</Label>
-          <Value>{t("tarifs.start.value")}</Value>
-        </Row>
-        <Row>
-          <Label>{t("tarifs.end.label")}</Label>
-          <Value>{t("tarifs.end.value")}</Value>
-        </Row>
-      </Col>
+      <Reveal>
+        <Col>
+          <Eyebrow>{t("tarifs.title")}</Eyebrow>
+          <Rule />
+          <Row>
+            <Label>{t("tarifs.summer.label")}</Label>
+            <Value>{t("tarifs.summer.value")}</Value>
+          </Row>
+          <Row>
+            <Label>{t("tarifs.beforeSummer.label")}</Label>
+            <Value>{t("tarifs.beforeSummer.value")}</Value>
+          </Row>
+        </Col>
+      </Reveal>
+      <Reveal delay={0.15}>
+        <Col className="mt-14 md:mt-0">
+          <SubEyebrow>{t("tarifs.infoTitle")}</SubEyebrow>
+          <Rule />
+          <Row>
+            <Label>{t("tarifs.start.label")}</Label>
+            <Value>{t("tarifs.start.value")}</Value>
+          </Row>
+          <Row>
+            <Label>{t("tarifs.end.label")}</Label>
+            <Value>{t("tarifs.end.value")}</Value>
+          </Row>
+        </Col>
+      </Reveal>
     </Main>
   );
 }
@@ -51,7 +56,16 @@ const Col = tw.div`
   flex-col
 `;
 
-const Eyebrow = tw.p`
+const Eyebrow = tw.h2`
+  font-sanchez
+  text-goldDeep
+  text-xs
+  font-medium
+  tracking-[0.22em]
+  uppercase
+`;
+
+const SubEyebrow = tw.h3`
   font-sanchez
   text-goldDeep
   text-xs

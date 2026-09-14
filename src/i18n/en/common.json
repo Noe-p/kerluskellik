@@ -3,7 +3,10 @@
   "seo": {
     "title": "Vacation Rental House Island of Batz | Kerluskellik - Sea View, 9 People",
     "description": "Kerluskellik: house rental on the island of Batz with sea view. 4 bedrooms, 9 people. Authentic house, enclosed garden, 50m from beach. Bretagne vacation.",
-    "keywords": "house rental island of batz, vacation rental batz, house rental brittany, island of batz rental, kerluskellik, house sea view batz, guesthouse island of batz, rental 9 people batz"
+    "keywords": "house rental island of batz, vacation rental batz, house rental brittany, island of batz rental, kerluskellik, house sea view batz, guesthouse island of batz, rental 9 people batz",
+    "testimonialsTitle": "Reviews & Testimonials | Kerluskellik - Island of Batz House",
+    "testimonialsDescription": "Read reviews from guests who stayed at Kerluskellik, a sea-view vacation house on the island of Batz. Genuine testimonials from happy families.",
+    "testimonialsKeywords": "kerluskellik reviews, island of batz rental testimonials, batz vacation rental reviews, kerluskellik guest feedback"
   },
   "stats": {
     "travelers": "Travelers",
@@ -22,11 +25,13 @@
   "description": {
     "title": "Description",
     "heading": "A captain's house, facing the sea",
-    "content": "Facing the sea, this magnificent house of character, south-facing, is an authentic long-haul captain's house, on the island of Batz. Every room opens onto the sea, and the enclosed garden that surrounds it leads to the beach in 50m, 5 minutes from the ferry terminal.<br/><br/>Everything here is conducive to relaxation: reading in front of a good fireplace, children playing in the garden or on the beach in complete peace, walks along the wild coast, long evenings of board games."
+    "content": "Facing the sea, this magnificent house of character, south-facing, is an authentic long-haul captain's house, on the island of Batz. Every room opens onto the sea, and the enclosed garden that surrounds it leads to the beach in 50m, 5 minutes from the ferry terminal.<br/><br/>Everything here is conducive to relaxation: reading in front of a good fireplace, children playing in the garden or on the beach in complete peace, walks along the wild coast, long evenings of board games.",
+    "imageAlt": "Living room of Kerluskellik house with sea view, Island of Batz"
   },
   "agencement": {
     "title": "Layout",
     "heading": "Four bedrooms, a sea view from every floor",
+    "imageAlt": "View of the bay from the Kerluskellik garden, Island of Batz",
     "items": {
       "item1": {
         "title": "Ground Floor",
@@ -83,11 +88,13 @@
     "title": "Photos",
     "heading": "The house in pictures",
     "showAll": "See all {{count}} photos",
-    "close": "Close"
+    "close": "Close",
+    "imageAlt": "Kerluskellik, vacation house island of Batz - {{room}}"
   },
   "carte": {
     "title": "Island of Batz",
     "heading": "Pors Alliou, Island of Batz",
+    "imageAlt": "Location map of Kerluskellik, Pors Alliou, Island of Batz",
     "hook": "Sheltered from the wind, 5 minutes from the ferry landing, the house looks out to sea from the tip of the island.",
     "address": "Pors Alliou<br/> 29253 Island of Batz"
   },
@@ -156,7 +163,8 @@
     "discover": "Discover"
   },
   "common": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "close": "Close"
   },
   "enums": {
     "navbar": {

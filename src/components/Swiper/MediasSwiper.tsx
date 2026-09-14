@@ -18,11 +18,12 @@ interface MediasSwiperProps {
   isOpen: boolean;
   setIsOpen: () => void;
   medias: string[];
+  alts?: string[];
   currentImage?: number;
 }
 
 export function MediasSwiper(props: MediasSwiperProps): React.JSX.Element {
-  const { className, isOpen, setIsOpen, medias, currentImage = 0 } = props;
+  const { className, isOpen, setIsOpen, medias, alts, currentImage = 0 } = props;
   const [hideArrows, setHideArrows] = useState(false);
   const [currentMedia, setCurrentMedia] = useState(currentImage);
 
@@ -72,11 +73,15 @@ export function MediasSwiper(props: MediasSwiperProps): React.JSX.Element {
           spaceBetween={50}
           initialSlide={currentImage}
         >
-          {medias.map((media) => (
+          {medias.map((media, index) => (
             <SwiperSlide key={media} onClick={() => setHideArrows(!hideArrows)}>
               <ImageContainer>
                 <ImageStyled>
-                  <Image src={media} alt={media} className="object-contain" />
+                  <Image
+                    src={media}
+                    alt={alts?.[index] ?? ""}
+                    className="object-contain"
+                  />
                 </ImageStyled>
               </ImageContainer>
             </SwiperSlide>

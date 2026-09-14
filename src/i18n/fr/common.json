@@ -3,7 +3,10 @@
   "seo": {
     "title": "Location Maison île de Batz | Kerluskellik - Vue Mer, 9 Personnes",
     "description": "Kerluskellik : location de maison sur l'île de Batz avec vue mer. 4 chambres, 9 personnes. Maison authentique, jardin clos, 50m plage. Séjour vacances Bretagne.",
-    "keywords": "location maison île de batz, location vacances batz, maison de location bretagne, île de batz location, kerluskellik, maison vue mer batz, gîte île de batz, location 9 personnes batz"
+    "keywords": "location maison île de batz, location vacances batz, maison de location bretagne, île de batz location, kerluskellik, maison vue mer batz, gîte île de batz, location 9 personnes batz",
+    "testimonialsTitle": "Avis et témoignages | Kerluskellik - Maison Île de Batz",
+    "testimonialsDescription": "Découvrez les avis de nos locataires ayant séjourné à Kerluskellik, maison de vacances vue mer sur l'île de Batz. Témoignages authentiques de familles conquises.",
+    "testimonialsKeywords": "avis kerluskellik, témoignages location île de batz, avis location vacances batz, retour d'expérience maison île de batz"
   },
   "stats": {
     "travelers": "Voyageurs",
@@ -22,11 +25,13 @@
   "description": {
     "title": "Description",
     "heading": "Une maison de capitaine, face à la mer",
-    "content": "Face à la mer, cette magnifique demeure de caractère, exposée Sud, est une authentique maison de capitaine au long cours, sur l'Île-de-Batz. Chaque pièce s'ouvre sur la mer, et le jardin clos qui l'entoure mène à la plage en 50 m, à 5 min du débarcadère.<br/><br/>Tout y est propice au repos : lecture devant un bon feu de cheminée, jeux d'enfants dans le jardin ou sur la plage en toute tranquillité, balades sur la côte sauvage, longues parties de jeux de société."
+    "content": "Face à la mer, cette magnifique demeure de caractère, exposée Sud, est une authentique maison de capitaine au long cours, sur l'Île-de-Batz. Chaque pièce s'ouvre sur la mer, et le jardin clos qui l'entoure mène à la plage en 50 m, à 5 min du débarcadère.<br/><br/>Tout y est propice au repos : lecture devant un bon feu de cheminée, jeux d'enfants dans le jardin ou sur la plage en toute tranquillité, balades sur la côte sauvage, longues parties de jeux de société.",
+    "imageAlt": "Salon de la maison Kerluskellik avec vue sur la mer, Île-de-Batz"
   },
   "agencement": {
     "title": "Agencement",
     "heading": "Quatre chambres, une vue sur mer depuis chaque étage",
+    "imageAlt": "Vue sur la baie depuis le jardin de la maison Kerluskellik, Île-de-Batz",
     "items": {
       "item1": {
         "title": "Rez-de-chaussée",
@@ -83,11 +88,13 @@
     "title": "Les photos",
     "heading": "La maison en images",
     "showAll": "Voir les {{count}} photos",
-    "close": "Fermer"
+    "close": "Fermer",
+    "imageAlt": "Kerluskellik, maison de vacances île de Batz - {{room}}"
   },
   "carte": {
     "title": "Île-de-Batz",
     "heading": "Pors Alliou, Île-de-Batz",
+    "imageAlt": "Carte de localisation de Kerluskellik, Pors Alliou, Île-de-Batz",
     "hook": "À l'abri du vent, à 5 minutes du débarcadère, la maison regarde le large depuis la pointe de l'île.",
     "address": "Pors Alliou<br/> 29253 Île-de-Batz"
   },
@@ -156,7 +163,8 @@
     "discover": "Découvrir"
   },
   "common": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "close": "Fermer"
   },
   "enums": {
     "navbar": {

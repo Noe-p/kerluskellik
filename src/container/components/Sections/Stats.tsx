@@ -1,3 +1,5 @@
+import { staggerChild, staggerParent } from "@/components";
+import { motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
 import tw from "tailwind-styled-components";
 
@@ -5,20 +7,25 @@ export function Stats(): React.JSX.Element {
   const { t } = useTranslation();
 
   return (
-    <Main>
-      <Stat>
+    <Main
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.4 }}
+      variants={staggerParent}
+    >
+      <Stat variants={staggerChild}>
         <Num>{"9"}</Num>
         <Label>{t("stats.travelers")}</Label>
       </Stat>
-      <Stat>
+      <Stat variants={staggerChild}>
         <Num>{"4"}</Num>
         <Label>{t("stats.rooms")}</Label>
       </Stat>
-      <Stat>
+      <Stat variants={staggerChild}>
         <Num>{"50 m"}</Num>
         <Label>{t("stats.beach")}</Label>
       </Stat>
-      <Stat className="border-r-0">
+      <Stat variants={staggerChild} className="border-r-0">
         <Num>{t("stats.exposureValue")}</Num>
         <Label>{t("stats.exposure")}</Label>
       </Stat>
@@ -26,7 +33,7 @@ export function Stats(): React.JSX.Element {
   );
 }
 
-const Main = tw.div`
+const Main = tw(motion.div)`
   grid
   grid-cols-2
   md:grid-cols-4
@@ -36,7 +43,7 @@ const Main = tw.div`
   border-cream/15
 `;
 
-const Stat = tw.div`
+const Stat = tw(motion.div)`
   flex
   flex-col
   items-center

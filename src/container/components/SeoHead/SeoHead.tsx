@@ -4,30 +4,50 @@ import { useRouter } from "next/router";
 import Script from "next/script";
 import React from "react";
 
-export function SeoHead(): React.JSX.Element {
-  const { asPath, locale, locales } = useRouter();
+interface SeoHeadProps {
+  title?: string;
+  description?: string;
+  keywords?: string;
+}
+
+export function SeoHead(props: SeoHeadProps): React.JSX.Element {
+  const { asPath, locale, locales, defaultLocale } = useRouter();
   const { t } = useTranslation("common");
 
-  const canonicalUrl = asPath.split("?")[0];
+  // `asPath` never carries the locale prefix (Next.js strips it), so it must
+  // be re-added by hand for any non-default locale to get correct URLs.
+  const pathWithoutLocale = asPath.split("?")[0];
+  const pathForLocale = (loc?: string): string => {
+    const prefix = loc && loc !== defaultLocale ? `/${loc}` : "";
+    return `${prefix}${pathWithoutLocale === "/" ? "" : pathWithoutLocale}`;
+  };
 
-  const title = t("seo.title");
-  const description = t("seo.description");
-  const keywords = t("seo.keywords");
+  const title = props.title ?? t("seo.title");
+  const description = props.description ?? t("seo.description");
+  const keywords = props.keywords ?? t("seo.keywords");
 
   // Ensure domain is properly set with fallback
   const domain = process.env.NEXT_PUBLIC_APP_URL || "https://kerluskellik.fr";
-  const url = `${domain}${canonicalUrl === "/" ? "" : canonicalUrl}`;
-  const image = `${domain}/og.png`;
+  const url = `${domain}${pathForLocale(locale)}`;
+  const image = `${domain}/og.jpg`;
+
+  const amenityFeature = Array.from({ length: 16 }, (_, index) => index + 1).map(
+    (index) => ({
+      "@type": "LocationFeatureSpecification",
+      name: t(`equipements.list.item${index}`),
+      value: true,
+    }),
+  );
 
   // Structured data JSON-LD
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": url,
+    "@type": "LodgingBusiness",
+    "@id": `${domain}/#business`,
     name: "Kerluskellik",
-    description: description,
+    description: t("seo.description"),
     image: image,
-    url: url,
+    url: `${domain}${pathForLocale(locale)}`,
     address: {
       "@type": "PostalAddress",
       streetAddress: "Pors Alliou",
@@ -41,54 +61,11 @@ export function SeoHead(): React.JSX.Element {
       longitude: "-4.0153",
     },
     priceRange: "€€",
-    sameAs: ["https://www.airbnb.fr", "https://www.booking.com"],
-  };
-
-  const accommodationData = {
-    "@context": "https://schema.org",
-    "@type": "Accommodation",
-    "@id": url,
-    name: "Kerluskellik - Maison de Vacances",
-    description: description,
-    image: image,
-    url: url,
-    amenities: [
-      {
-        "@type": "Thing",
-        name: "WiFi",
-      },
-      {
-        "@type": "Thing",
-        name: "Fireplace",
-      },
-      {
-        "@type": "Thing",
-        name: "Washer/Dryer",
-      },
-      {
-        "@type": "Thing",
-        name: "Dishwasher",
-      },
-      {
-        "@type": "Thing",
-        name: "Kitchen",
-      },
-      {
-        "@type": "Thing",
-        name: "Beach Access",
-      },
-    ],
-    numberOfBedrooms: 4,
-    occupancy: 9,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Pors Alliou",
-      addressLocality: "Île-de-Batz",
-      postalCode: "29253",
-      addressCountry: "FR",
-    },
+    numberOfRooms: 4,
     petsAllowed: false,
-    priceRange: "€€",
+    checkinTime: "17:00",
+    checkoutTime: "11:00",
+    amenityFeature,
   };
 
   return (
@@ -122,25 +99,19 @@ export function SeoHead(): React.JSX.Element {
             key={loc}
             rel="alternate"
             hrefLang={loc}
-            href={`${domain}${loc === locale ? canonicalUrl : `/${loc}${canonicalUrl === "/" ? "" : canonicalUrl}`}`}
+            href={`${domain}${pathForLocale(loc)}`}
           />
         ))}
         <link
           rel="alternate"
           hrefLang="x-default"
-          href={`${domain}${canonicalUrl === "/" ? "" : canonicalUrl}`}
+          href={`${domain}${pathForLocale(defaultLocale)}`}
         />
 
         {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(accommodationData),
-          }}
         />
       </Head>
 

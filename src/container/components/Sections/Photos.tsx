@@ -1,6 +1,7 @@
-import { ColCenter, Grid3, H2, Image, Modal, MediasSwiper } from "@/components";
+import { ColCenter, Grid3, H2, Image, Modal, MediasSwiper, Reveal, staggerChild, staggerParent } from "@/components";
 import { FILTERS, PHOTOS } from "@/data/photos";
 import { Photo } from "@/types";
+import { motion } from "framer-motion";
 import { LayoutGrid, X } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { Fragment, useEffect, useMemo, useState } from "react";
@@ -52,14 +53,22 @@ export function Photos(props: PhotosProps): React.JSX.Element {
 
   return (
     <Main id={NAVBAR_LINKS.PHOTOS}>
-      <Eyebrow>{t("photos.title")}</Eyebrow>
-      <Rule />
-      <Heading>{t("photos.heading")}</Heading>
+      <Reveal className="flex flex-col items-center">
+        <Eyebrow>{t("photos.title")}</Eyebrow>
+        <Rule />
+        <Heading>{t("photos.heading")}</Heading>
+      </Reveal>
 
-      <Mosaic>
+      <Mosaic
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={staggerParent}
+      >
         {previewPhotos.map((photo, index) => (
           <MosaicTile
             key={photo.src}
+            variants={staggerChild}
             $large={index === 0}
             $hideOnMobile={index > 0}
             onClick={() => setIsGalleryOpen(true)}
@@ -68,7 +77,9 @@ export function Photos(props: PhotosProps): React.JSX.Element {
               fill
               objectFit="cover"
               src={photo.src}
-              alt=""
+              alt={t("photos.imageAlt", {
+                room: t(`enums.filters.${photo.filters[0]}`),
+              })}
               sizes="(max-width: 768px) 100vw, 60vw"
             />
           </MosaicTile>
@@ -90,6 +101,9 @@ export function Photos(props: PhotosProps): React.JSX.Element {
         setIsOpen={() => setIsMediaSwiperOpen(false)}
         currentImage={currentImage}
         medias={PHOTOS.map((photo) => photo.src)}
+        alts={PHOTOS.map((photo) =>
+          t("photos.imageAlt", { room: t(`enums.filters.${photo.filters[0]}`) }),
+        )}
       />
     </Main>
   );
@@ -164,7 +178,14 @@ function PhotoGalleryModal(props: PhotoGalleryModalProps): React.JSX.Element {
                 )}
                 <PlateFrame>
                   <Pic onClick={() => onPhotoClick(media.src)}>
-                    <Image fill objectFit="cover" src={media.src} alt="media" />
+                    <Image
+                      fill
+                      objectFit="cover"
+                      src={media.src}
+                      alt={t("photos.imageAlt", {
+                        room: t(`enums.filters.${filter}`),
+                      })}
+                    />
                   </Pic>
                   <Caption>
                     <Tag>{t(`enums.filters.${filter}`)}</Tag>
@@ -210,7 +231,7 @@ const Heading = tw(H2)`
   mb-8
 `;
 
-const Mosaic = tw.div`
+const Mosaic = tw(motion.div)`
   relative
   grid
   grid-cols-1
@@ -226,7 +247,7 @@ const Mosaic = tw.div`
   p-1.5
 `;
 
-const MosaicTile = tw.button<{ $large?: boolean; $hideOnMobile?: boolean }>`
+const MosaicTile = tw(motion.button)<{ $large?: boolean; $hideOnMobile?: boolean }>`
   relative
   block
   w-full

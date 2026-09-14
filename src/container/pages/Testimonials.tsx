@@ -1,6 +1,6 @@
 "use client";
 
-import { ColCenter, H2, Layout, P12, P16, Row } from "@/components";
+import { ColCenter, H1, Layout, P12, P16, Row } from "@/components";
 import { Card } from "@/components/ui/card";
 import { testimonals } from "@/data";
 import { ROUTES } from "@/routing";
@@ -25,7 +25,7 @@ export function Testimonials(): React.JSX.Element {
             <P16>{t("generics.back")}</P16>
           </Link>
         </Row>
-        <H2 className="my-5">{t("testimonials.title")}</H2>
+        <H1 className="my-5">{t("testimonials.title")}</H1>
         <div className="w-full columns-1 md:columns-2 lg:columns-3 [column-gap:10px]">
           {testimonals.map((testimonial) => (
             <Card

@@ -1,4 +1,6 @@
+import { WaveDivider } from '@/components/Icons';
 import { H2, Link, P14, P16 } from '@/components/Texts';
+import { Reveal } from '@/components/Motion';
 import { scrollTo } from '@/services/utils';
 import { useTranslation } from 'next-i18next';
 import React from 'react';
@@ -15,16 +17,19 @@ export function Footer(props: FooterProps): React.JSX.Element {
 
   return (
     <Main id={NAVBAR_LINKS.CONTACT} className={className}>
+      <Wave className='text-secondary/50' />
       <Wordmark>{t('home.name')}</Wordmark>
       <Rule />
-      <InfosContainer>
-        <Title>{t('contact.title')}</Title>
-        <P16 className='mb-2 text-white'>{t('contact.name')}</P16>
-        <P14 className='mb-6 text-white/70 text-center max-w-xs'>{t('contact.hook')}</P14>
-        <CtaButton type='button' onClick={() => scrollTo(NAVBAR_LINKS.DISPONIBILITES)}>
-          {t('contact.cta')}
-        </CtaButton>
-      </InfosContainer>
+      <Reveal className='flex flex-col items-center'>
+        <InfosContainer>
+          <Title>{t('contact.title')}</Title>
+          <P16 className='mb-2 text-white'>{t('contact.name')}</P16>
+          <P14 className='mb-6 text-white/70 text-center max-w-xs'>{t('contact.hook')}</P14>
+          <CtaButton type='button' onClick={() => scrollTo(NAVBAR_LINKS.DISPONIBILITES)}>
+            {t('contact.cta')}
+          </CtaButton>
+        </InfosContainer>
+      </Reveal>
       <CopyRight>
         {t('generics.designed')}
         <LinkStyled href='https://noe-philippe.fr' target='_blank'>
@@ -43,6 +48,12 @@ const Main = tw.div`
   w-full
   flex-col
   pt-16
+`;
+
+const Wave = tw(WaveDivider)`
+  w-36
+  h-4
+  mb-6
 `;
 
 const Wordmark = tw.p`

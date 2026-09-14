@@ -1,4 +1,4 @@
-import { Image, P16 } from "@/components";
+import { CompassIcon, Image, P16, Reveal, SailboatIcon } from "@/components";
 import { Trans, useTranslation } from "next-i18next";
 import tw from "tailwind-styled-components";
 import { NAVBAR_LINKS } from "../Navbar";
@@ -9,43 +9,36 @@ export function Carte(): React.JSX.Element {
   return (
     <Main id={NAVBAR_LINKS.CARTE}>
       <Wrap>
-        <TextCol>
-          <Eyebrow>{t("carte.title")}</Eyebrow>
-          <Rule />
-          <Heading>{t("carte.heading")}</Heading>
-          <Hook>{t("carte.hook")}</Hook>
-        </TextCol>
-        <MapCol>
-          <MapCard>
-            <Badge>
-              <CompassIcon />
-            </Badge>
-            <MapImage
-              fill={false}
-              src="/images/carte.webP"
-              alt="Carte de l'île de Batz"
-            />
-          </MapCard>
-          <Caption>
-            <Trans i18nKey="carte.address" components={{ br: <br key="br-1" /> }} />
-          </Caption>
-        </MapCol>
+        <Reveal>
+          <TextCol>
+            <Eyebrow>{t("carte.title")}</Eyebrow>
+            <Rule />
+            <Heading>{t("carte.heading")}</Heading>
+            <HookRow>
+              <SailboatIcon size={16} className="shrink-0 text-secondary/70 mt-1" />
+              <Hook>{t("carte.hook")}</Hook>
+            </HookRow>
+          </TextCol>
+        </Reveal>
+        <Reveal delay={0.15}>
+          <MapCol>
+            <MapCard>
+              <Badge>
+                <CompassIcon size={22} />
+              </Badge>
+              <MapImage
+                fill={false}
+                src="/images/carte.webP"
+                alt={t("carte.imageAlt")}
+              />
+            </MapCard>
+            <Caption>
+              <Trans i18nKey="carte.address" components={{ br: <br key="br-1" /> }} />
+            </Caption>
+          </MapCol>
+        </Reveal>
       </Wrap>
     </Main>
-  );
-}
-
-function CompassIcon(): React.JSX.Element {
-  return (
-    <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-      <circle cx="14" cy="14" r="11.5" stroke="currentColor" strokeWidth="1" />
-      <path
-        d="M14 3V7M14 21V25M3 14H7M21 14H25"
-        stroke="currentColor"
-        strokeWidth="1"
-      />
-      <path d="M14 8.5L16.2 14L14 19.5L11.8 14Z" fill="currentColor" />
-    </svg>
   );
 }
 
@@ -99,14 +92,22 @@ const Heading = tw.h2`
   leading-tight
 `;
 
-const Hook = tw(P16)`
-  text-cream/85
-  font-light
-  leading-relaxed
+const HookRow = tw.div`
+  flex
+  items-start
+  gap-2.5
+  justify-center
+  md:justify-start
   mt-5
   max-w-100
   mx-auto
   md:mx-0
+`;
+
+const Hook = tw(P16)`
+  text-cream/85
+  font-light
+  leading-relaxed
 `;
 
 const MapCol = tw.div`

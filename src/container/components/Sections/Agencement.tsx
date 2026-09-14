@@ -1,4 +1,5 @@
-import { Grid4, H2, H3, Image, P16 } from "@/components";
+import { H2, H3, Image, ParallaxImage, P16, Reveal, ShipWheelIcon, staggerChild, staggerParent } from "@/components";
+import { motion } from "framer-motion";
 import { Trans, useTranslation } from "next-i18next";
 import tw from "tailwind-styled-components";
 import { NAVBAR_LINKS } from "../Navbar";
@@ -9,29 +10,43 @@ export function Agencement(): React.JSX.Element {
   return (
     <Main id={NAVBAR_LINKS.AGENCEMENT}>
       <Head>
-        <HeadText>
-          <Eyebrow>{t("agencement.title")}</Eyebrow>
-          <Rule />
-          <Heading>{t("agencement.heading")}</Heading>
-        </HeadText>
-        <Porthole>
-          <Image
-            fill
-            objectFit="cover"
-            className="rounded-full"
-            loading="lazy"
-            src="/images/jardin/jardin-3.webP"
-            alt="Vue sur la baie"
-          />
-        </Porthole>
+        <Reveal>
+          <HeadText>
+            <IconBadge>
+              <ShipWheelIcon size={20} />
+            </IconBadge>
+            <Eyebrow>{t("agencement.title")}</Eyebrow>
+            <Rule />
+            <Heading>{t("agencement.heading")}</Heading>
+          </HeadText>
+        </Reveal>
+        <Reveal delay={0.15}>
+          <Porthole>
+            <ParallaxImage distance={16} className="rounded-full">
+              <Image
+                fill
+                objectFit="cover"
+                className="rounded-full"
+                loading="lazy"
+                src="/images/jardin/jardin-3.webP"
+                alt={t("agencement.imageAlt")}
+              />
+            </ParallaxImage>
+          </Porthole>
+        </Reveal>
       </Head>
-      <CardsGrid>
-        <Card>
+      <CardsGrid
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={staggerParent}
+      >
+        <Card variants={staggerChild}>
           <Index>{"01"}</Index>
           <CardTitle>{t("agencement.items.item1.title")}</CardTitle>
           <CardText>{t("agencement.items.item1.content")}</CardText>
         </Card>
-        <Card>
+        <Card variants={staggerChild}>
           <Index>{"02"}</Index>
           <CardTitle>{t("agencement.items.item2.title")}</CardTitle>
           <List>
@@ -41,7 +56,7 @@ export function Agencement(): React.JSX.Element {
             <Item>{t("agencement.items.item2.list.item4")}</Item>
           </List>
         </Card>
-        <Card>
+        <Card variants={staggerChild}>
           <Index>{"03"}</Index>
           <CardTitle>{t("agencement.items.item3.title")}</CardTitle>
           <List>
@@ -49,7 +64,7 @@ export function Agencement(): React.JSX.Element {
             <Item>{t("agencement.items.item3.list.item2")}</Item>
           </List>
         </Card>
-        <Card>
+        <Card variants={staggerChild}>
           <Index>{"04"}</Index>
           <CardTitle>{t("agencement.items.item4.title")}</CardTitle>
           <List>
@@ -98,6 +113,20 @@ const HeadText = tw.div`
   flex-col
 `;
 
+const IconBadge = tw.div`
+  flex
+  items-center
+  justify-center
+  w-12 h-12
+  rounded-full
+  border
+  border-secondary
+  text-secondary
+  mx-auto
+  md:mx-0
+  mb-3
+`;
+
 const Eyebrow = tw.p`
   font-sanchez
   text-secondary
@@ -139,12 +168,18 @@ const Porthole = tw.div`
   shadow-2xl
 `;
 
-const CardsGrid = tw(Grid4)`
+const CardsGrid = tw(motion.div)`
+  grid
+  md:grid-cols-4
+  grid-cols-1
+  gap-y-5
+  md:gap-5
+  w-full
   max-w-300
   mx-auto
 `;
 
-const Card = tw.div`
+const Card = tw(motion.div)`
   bg-navySoft
   border-t-2
   border-secondary
