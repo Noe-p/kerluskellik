@@ -184,7 +184,7 @@ const Main = tw(ColCenter)`
   w-full
   px-5 md:px-10
   justify-center
-  py-20 md:py-28
+  py-14 md:py-20
 `;
 
 const Eyebrow = tw.p`

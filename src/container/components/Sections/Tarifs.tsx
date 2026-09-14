@@ -42,8 +42,8 @@ const Main = tw.div`
   max-w-300
   mx-auto
   px-5 md:px-10
-  py-20
-  md:py-28
+  py-14
+  md:py-20
 `;
 
 const Col = tw.div`

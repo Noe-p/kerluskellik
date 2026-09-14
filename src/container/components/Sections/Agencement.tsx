@@ -76,8 +76,8 @@ const Main = tw.div`
   bg-primary
   w-full
   px-5 md:px-10
-  py-20
-  md:py-28
+  py-14
+  md:py-20
 `;
 
 const Head = tw.div`

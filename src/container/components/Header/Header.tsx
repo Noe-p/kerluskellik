@@ -69,7 +69,7 @@ export function Header(props: HeaderProps): React.JSX.Element {
           <Rule />
           <SubTitle>{t("home.subTitle")}</SubTitle>
           <Hook>{t("home.hook")}</Hook>
-          <CtaButton onClick={() => scrollTo(NAVBAR_LINKS.CONTACT)}>
+          <CtaButton onClick={() => scrollTo(NAVBAR_LINKS.DISPONIBILITES)}>
             {t("home.cta")}
             <ArrowIcon />
           </CtaButton>

@@ -102,6 +102,40 @@
     "start": { "label": "Horaire d'arrivée", "value": "17h00" },
     "end": { "label": "Horaire de départ", "value": "11h00" }
   },
+  "disponibilites": {
+    "title": "Disponibilités",
+    "hook": "Sélectionnez vos dates d'arrivée et de départ pour envoyer une demande de réservation.",
+    "legend": { "booked": "Réservé", "selected": "Sélectionné", "free": "Libre" },
+    "prevMonth": "Mois précédent",
+    "nextMonth": "Mois suivant",
+    "unavailable": "Le calendrier n'est pas disponible pour le moment, merci de réessayer plus tard.",
+    "overlapWarning": "Cette période chevauche une réservation existante. Choisissez une autre date de départ.",
+    "selectStart": "Choisissez votre date d'arrivée",
+    "selectEnd": "Choisissez votre date de départ",
+    "cancelSelection": "Annuler",
+    "form": {
+      "dateRange": "Du {{start}} au {{end}}",
+      "changeDates": "Modifier les dates",
+      "nights_one": "{{count}} nuit",
+      "nights_other": "{{count}} nuits",
+      "name": "Nom",
+      "email": "Email",
+      "phone": "Téléphone (optionnel)",
+      "message": "Message (optionnel)",
+      "messagePlaceholder": "Nombre de personnes, questions particulières...",
+      "submit": "Envoyer la demande",
+      "submitting": "Envoi en cours...",
+      "success": "Demande envoyée ! Nous vous répondrons rapidement à {{email}}.",
+      "newRequest": "Faire une nouvelle demande",
+      "error": "Une erreur est survenue, merci de réessayer.",
+      "notConfigured": "Le formulaire de demande est en cours de configuration, merci de réessayer plus tard.",
+      "errors": {
+        "name": "Merci d'indiquer votre nom.",
+        "email": "Adresse email invalide.",
+        "phone": "Numéro de téléphone invalide."
+      }
+    }
+  },
   "testimonials": {
     "title": "Les témoignages",
     "heading": "Le journal de bord",
@@ -111,9 +145,8 @@
   "contact": {
     "title": "Contact",
     "name": "Pierre et Claire PHILIPPE",
-    "address": "16 rue Jean Moulin,<br/> 29120 Pont l'Abbé",
-    "phone": "02 98 82 33 67</br>06 42 72 08 37",
-    "email": "pierreclairephilippe@gmail.com"
+    "hook": "Pour toute demande, sélectionnez vos dates sur le calendrier des disponibilités.",
+    "cta": "Voir les disponibilités"
   },
   "generics": {
     "copyright": "Copyright © 2026 - Kerluskellik - Tous droits réservés",
@@ -134,6 +167,7 @@
       "PHOTOS": "Photos",
       "TARIFS": "Tarifs",
       "CARTE": "Carte",
+      "DISPONIBILITES": "Disponibilités",
       "CONTACT": "Contact",
       "TESTIMONIALS": "Témoignages"
     },

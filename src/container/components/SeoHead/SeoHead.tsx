@@ -28,8 +28,6 @@ export function SeoHead(): React.JSX.Element {
     description: description,
     image: image,
     url: url,
-    telephone: "02 98 82 33 67",
-    email: "pierreclairephilippe@gmail.com",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Pors Alliou",

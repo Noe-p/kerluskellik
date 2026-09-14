@@ -34,7 +34,7 @@ export function Description(): React.JSX.Element {
 
 const Main = tw(Grid2)`
   md:gap-16
-  py-16 md:py-24
+  py-14 md:py-20
   justify-center
   items-center
   px-5 md:px-10

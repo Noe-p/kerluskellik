@@ -1,4 +1,5 @@
 import { H2, Link, P14, P16 } from '@/components/Texts';
+import { scrollTo } from '@/services/utils';
 import { useTranslation } from 'next-i18next';
 import React from 'react';
 import tw from 'tailwind-styled-components';
@@ -18,21 +19,11 @@ export function Footer(props: FooterProps): React.JSX.Element {
       <Rule />
       <InfosContainer>
         <Title>{t('contact.title')}</Title>
-        <P16 className='mb-5 text-white'>{t('contact.name')}</P16>
-        <LinkStyled href='tel:0298823367' target='_blank'>
-          {t('02 98 82 33 67')}
-        </LinkStyled>
-        <LinkStyled className='mb-5' href='tel:0642720837' target='_blank'>
-          {t('06 42 72 08 37')}
-        </LinkStyled>
-
-        <LinkStyled
-          className='mb-10'
-          href='mailto:pierreclairephilippe@gmail.com'
-          target='_blank'
-        >
-          {t('pierreclairephilippe@gmail.com')}
-        </LinkStyled>
+        <P16 className='mb-2 text-white'>{t('contact.name')}</P16>
+        <P14 className='mb-6 text-white/70 text-center max-w-xs'>{t('contact.hook')}</P14>
+        <CtaButton type='button' onClick={() => scrollTo(NAVBAR_LINKS.DISPONIBILITES)}>
+          {t('contact.cta')}
+        </CtaButton>
       </InfosContainer>
       <CopyRight>
         {t('generics.designed')}
@@ -93,4 +84,24 @@ const InfosContainer = tw.div`
 const LinkStyled = tw(Link)`
   text-white
   hover:text-secondary
+`;
+
+const CtaButton = tw.button`
+  flex
+  items-center
+  gap-3
+  px-7 py-3.5
+  mb-10
+  border
+  border-secondary
+  text-secondary
+  text-xs
+  font-medium
+  tracking-[0.16em]
+  uppercase
+  cursor-pointer
+  transition-colors
+  duration-300
+  hover:bg-secondary
+  hover:text-primary
 `;

@@ -29,8 +29,8 @@ export function Equipements(): React.JSX.Element {
 const Main = tw(ColCenter)`
   w-full
   px-5 md:px-10
-  py-20
-  md:py-28
+  py-14
+  md:py-20
   justify-center
 `;
 

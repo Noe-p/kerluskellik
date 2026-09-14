@@ -9,6 +9,7 @@ import { Equipements } from '../components/Sections/Equipements';
 import { Photos } from '../components/Sections/Photos';
 import { Carte } from '../components/Sections/Carte';
 import { Tarifs } from '../components/Sections/Tarifs';
+import { Disponibilites } from '../components/Sections/Disponibilites';
 import { Testimonials } from '../components/Sections/Testimonials';
 import { Separator } from '@/components/ui/separator';
 
@@ -26,6 +27,7 @@ export function HomePage(): React.JSX.Element {
       <Photos setIsNavClose={setIsNavClose} />
       <Carte />
       <Tarifs />
+      <Disponibilites />
       <Separator className='w-1/2' />
       <Testimonials />
     </Layout>

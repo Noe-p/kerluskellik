@@ -102,6 +102,40 @@
     "start": { "label": "Check-in time", "value": "5:00 PM" },
     "end": { "label": "Check-out time", "value": "11:00 AM" }
   },
+  "disponibilites": {
+    "title": "Availability",
+    "hook": "Select your check-in and check-out dates to send a booking request.",
+    "legend": { "booked": "Booked", "selected": "Selected", "free": "Available" },
+    "prevMonth": "Previous month",
+    "nextMonth": "Next month",
+    "unavailable": "The calendar is currently unavailable, please try again later.",
+    "overlapWarning": "This period overlaps an existing booking. Please choose a different departure date.",
+    "selectStart": "Choose your check-in date",
+    "selectEnd": "Choose your check-out date",
+    "cancelSelection": "Cancel",
+    "form": {
+      "dateRange": "{{start}} to {{end}}",
+      "changeDates": "Change dates",
+      "nights_one": "{{count}} night",
+      "nights_other": "{{count}} nights",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "message": "Message (optional)",
+      "messagePlaceholder": "Number of guests, special requests...",
+      "submit": "Send request",
+      "submitting": "Sending...",
+      "success": "Request sent! We'll get back to you shortly at {{email}}.",
+      "newRequest": "Make a new request",
+      "error": "Something went wrong, please try again.",
+      "notConfigured": "The request form is being set up, please try again later.",
+      "errors": {
+        "name": "Please enter your name.",
+        "email": "Invalid email address.",
+        "phone": "Invalid phone number."
+      }
+    }
+  },
   "testimonials": {
     "title": "Testimonials",
     "heading": "The ship's log",
@@ -111,9 +145,8 @@
   "contact": {
     "title": "Contact",
     "name": "Pierre et Claire PHILIPPE",
-    "address": "16 rue Jean Moulin,<br/> 29120 Pont l'Abbé",
-    "phone": "02 98 82 33 67</br>06 42 72 08 37",
-    "email": "pierreclairephilippe@gmail.com"
+    "hook": "For any request, select your dates on the availability calendar.",
+    "cta": "See availability"
   },
   "generics": {
     "copyright": "Copyright © 2026 - Kerluskellik - All rights reserved",
@@ -134,6 +167,7 @@
       "PHOTOS": "Photos",
       "TARIFS": "Pricing",
       "CARTE": "Map",
+      "DISPONIBILITES": "Availability",
       "CONTACT": "Contact",
       "TESTIMONIALS": "Testimonials"
     },
