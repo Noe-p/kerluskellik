@@ -1,4 +1,5 @@
 import {
+  addDays,
   addMonths,
   differenceInCalendarDays,
   eachDayOfInterval,
@@ -8,6 +9,7 @@ import {
   isBefore,
   isSameDay,
   isSameMonth,
+  isSaturday,
   isToday,
   isWithinInterval,
   startOfDay,
@@ -55,8 +57,15 @@ const PHONE_REGEX = /^[+\d][\d\s().-]{6,19}$/;
 const MIN_SUBMIT_DELAY_MS = 1500;
 
 function isDateBooked(day: Date, ranges: BookedRange[]): boolean {
+  // Booked ranges come from all-day iCal events with no time component. The API
+  // serializes them through toISOString(), so range.start/end land as UTC instants
+  // that don't line up with the browser's local midnight. Re-flooring both ends to
+  // local start-of-day keeps the comparison in whole calendar days on both sides -
+  // without it, a positive UTC offset (e.g. Europe/Paris) makes the checkout day
+  // falsely read as still booked.
   return ranges.some(
-    (range) => day >= startOfDay(new Date(range.start)) && day < new Date(range.end),
+    (range) =>
+      day >= startOfDay(new Date(range.start)) && day < startOfDay(new Date(range.end)),
   );
 }
 
@@ -78,7 +87,6 @@ export function Disponibilites(): React.JSX.Element {
 
   const [selection, setSelection] = useState<Selection>({ start: null, end: null });
   const [hoverDay, setHoverDay] = useState<Date | null>(null);
-  const [warning, setWarning] = useState<string | null>(null);
 
   const [form, setForm] = useState<FormState>({ name: '', email: '', phone: '', message: '' });
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
@@ -137,23 +145,13 @@ export function Disponibilites(): React.JSX.Element {
   const secondMonth = addMonths(firstMonth, 1);
 
   function handleDayClick(day: Date) {
-    setWarning(null);
-
     if (selection.start && !selection.end) {
       if (isSameDay(day, selection.start)) {
         setSelection({ start: null, end: null });
         return;
       }
-      if (isBefore(day, selection.start)) {
-        setSelection({ start: day, end: null });
-        return;
-      }
-      if (!isRangeFree(selection.start, day, booked)) {
-        setWarning(t('disponibilites.overlapWarning'));
-        setSelection({ start: day, end: null });
-        return;
-      }
       setSelection({ start: selection.start, end: day });
+      setStatus('idle');
       return;
     }
 
@@ -169,7 +167,6 @@ export function Disponibilites(): React.JSX.Element {
 
   function resetSelection() {
     setSelection({ start: null, end: null });
-    setWarning(null);
     setStatus('idle');
     setForm({ name: '', email: '', phone: '', message: '' });
     setFieldErrors({});
@@ -178,6 +175,7 @@ export function Disponibilites(): React.JSX.Element {
 
   const nights =
     selection.start && selection.end ? differenceInCalendarDays(selection.end, selection.start) : 0;
+  const weeks = nights / 7;
 
   const rangeLabel =
     selection.start && selection.end
@@ -214,11 +212,14 @@ export function Disponibilites(): React.JSX.Element {
           access_key: WEB3FORMS_ACCESS_KEY,
           subject: `Demande de réservation Kerluskellik : ${rangeLabel}`,
           from_name: form.name.trim(),
-          name: form.name.trim(),
+          // Web3Forms builds the email body from these field names directly
+          // (capitalizing only the first letter), and reads "email" specifically
+          // to set the Reply-To header - so that one key must stay as-is.
+          nom: form.name.trim(),
           email: form.email.trim(),
-          phone: form.phone.trim(),
-          dates: rangeLabel,
-          nights,
+          téléphone: form.phone.trim(),
+          'dates du séjour': rangeLabel,
+          'nombre de nuits': nights,
           message: form.message.trim(),
           botcheck: honeypot,
         }),
@@ -279,8 +280,6 @@ export function Disponibilites(): React.JSX.Element {
               </NavButton>
             </Nav>
           </StatusBar>
-
-          {warning && <Warning>{warning}</Warning>}
 
           <Months>
             <MonthGrid
@@ -349,17 +348,19 @@ export function Disponibilites(): React.JSX.Element {
               </SuccessPanel>
             ) : (
               <FormPanel onSubmit={handleSubmit} noValidate>
+                <RequestBadge>{t('disponibilites.form.requestBadge')}</RequestBadge>
+
                 <Summary>
                   <div>
                     <SummaryDates>{rangeLabel}</SummaryDates>
-                    <SummaryNights>
-                      {t('disponibilites.form.nights', { count: nights })}
-                    </SummaryNights>
+                    <SummaryNights>{t('disponibilites.form.weeks', { count: weeks })}</SummaryNights>
                   </div>
                   <ChangeDatesButton type="button" onClick={resetSelection}>
                     {t('disponibilites.form.changeDates')}
                   </ChangeDatesButton>
                 </Summary>
+
+                <RequestNote>{t('disponibilites.form.requestNote')}</RequestNote>
 
                 <HoneypotField
                   type="text"
@@ -489,9 +490,16 @@ function MonthGrid(props: MonthGridProps): React.JSX.Element {
     end: endOfWeek(weekStart, { weekStartsOn: 1 }),
   });
 
-  const previewEnd =
-    selection.start && !selection.end && hoverDay && hoverDay > selection.start ? hoverDay : null;
+  // Stays run whole weeks, Saturday to Saturday, and can span more than one week.
+  // With no arrival picked yet, hovering a bookable Saturday previews a 1-week stay.
+  // Once an arrival is picked, hovering a later, reachable Saturday previews that
+  // departure instead, so the range can be extended to 2, 3+ weeks.
+  const previewStart = !selection.start ? hoverDay : selection.start;
+  const previewEnd = !selection.start ? (hoverDay ? addDays(hoverDay, 7) : null) : hoverDay;
+  const rangeStart = selection.start ?? previewStart;
   const rangeEnd = selection.end ?? previewEnd;
+  const previewStartIsGhost = !selection.start;
+  const previewEndIsGhost = !selection.end;
 
   return (
     <MonthCol>
@@ -506,25 +514,50 @@ function MonthGrid(props: MonthGridProps): React.JSX.Element {
           const inMonth = isSameMonth(day, monthDate);
           const isPast = isBefore(day, today) && !isSameDay(day, today);
           const isBookedDay = isDateBooked(day, booked);
-          const isSelectable = inMonth && !isPast && !isBookedDay;
+          const isConfirmedStart = Boolean(selection.start && isSameDay(day, selection.start));
 
-          const isStart = Boolean(selection.start && isSameDay(day, selection.start));
+          let isSelectable: boolean;
+          if (!selection.start) {
+            // Picking an arrival date: only a Saturday whose following week is
+            // entirely free can start a stay.
+            isSelectable =
+              inMonth && !isPast && isSaturday(day) && isRangeFree(day, addDays(day, 7), booked);
+          } else if (!selection.end) {
+            // Picking a departure date: any later Saturday reachable without
+            // crossing a booked day extends the stay by full weeks.
+            const minEnd = addDays(selection.start, 7);
+            isSelectable =
+              inMonth &&
+              isSaturday(day) &&
+              !isBefore(day, minEnd) &&
+              isRangeFree(selection.start, day, booked);
+          } else {
+            isSelectable = false;
+          }
+          // The confirmed arrival stays clickable so it can be tapped again to
+          // restart the selection while picking a departure date.
+          const isClickable = isSelectable || isConfirmedStart;
+
           const isConfirmedEnd = Boolean(selection.end && isSameDay(day, selection.end));
+          const isPreviewStart = Boolean(
+            previewStartIsGhost && previewStart && isSameDay(day, previewStart),
+          );
           const isPreviewEnd = Boolean(
-            !selection.end && previewEnd && isSameDay(day, previewEnd),
+            previewEndIsGhost && previewEnd && isSameDay(day, previewEnd),
           );
           const isInRange = Boolean(
-            selection.start &&
+            rangeStart &&
               rangeEnd &&
-              !isStart &&
+              !isConfirmedStart &&
               !isConfirmedEnd &&
+              !isPreviewStart &&
               !isPreviewEnd &&
-              isWithinInterval(day, { start: selection.start, end: rangeEnd }),
+              isWithinInterval(day, { start: rangeStart, end: rangeEnd }),
           );
 
           const statusLabel = isBookedDay
             ? `, ${t('disponibilites.legend.booked')}`
-            : isStart || isConfirmedEnd
+            : isConfirmedStart || isConfirmedEnd
               ? `, ${t('disponibilites.legend.selected')}`
               : '';
 
@@ -532,17 +565,18 @@ function MonthGrid(props: MonthGridProps): React.JSX.Element {
             <Day
               key={day.toISOString()}
               type="button"
-              disabled={!isSelectable}
+              disabled={!isClickable}
               aria-label={`${format(day, 'EEEE d MMMM yyyy', { locale })}${statusLabel}`}
               aria-current={isToday(day) ? 'date' : undefined}
               $inMonth={inMonth}
               $isPast={isPast}
               $isBooked={isBookedDay}
               $isToday={isToday(day)}
-              $isFilled={isStart || isConfirmedEnd}
-              $isPreviewEdge={isPreviewEnd}
+              $isFilled={isConfirmedStart || isConfirmedEnd}
+              $isPreviewEdge={isPreviewStart || isPreviewEnd}
               $isInRange={isInRange}
-              onClick={() => isSelectable && onDayClick(day)}
+              $isSelectable={isSelectable}
+              onClick={() => isClickable && onDayClick(day)}
               onMouseEnter={() => isSelectable && onDayHover(day)}
             >
               {format(day, 'd')}
@@ -738,6 +772,7 @@ interface DayProps {
   $isFilled: boolean;
   $isPreviewEdge: boolean;
   $isInRange: boolean;
+  $isSelectable: boolean;
 }
 
 const Day = tw.button<DayProps>`
@@ -768,7 +803,9 @@ const Day = tw.button<DayProps>`
             ? 'bg-goldDeep/15 border-goldDeep/15 text-primary'
             : props.$isPast
               ? 'border-primary/5 text-primary/30 cursor-not-allowed'
-              : 'border-primary/20 text-primary cursor-pointer hover:border-goldDeep hover:bg-goldDeep/10'}
+              : props.$isSelectable
+                ? 'border-primary/20 text-primary cursor-pointer hover:border-goldDeep hover:bg-goldDeep/10'
+                : 'border-primary/5 text-primary/30 cursor-default'}
   ${(props) =>
     props.$isToday && !props.$isBooked && !props.$isFilled && !props.$isPreviewEdge
       ? 'ring-1 ring-goldDeep'
@@ -849,6 +886,30 @@ const FormPanel = tw.form`
   flex-col
   gap-6
   w-full
+`;
+
+const RequestBadge = tw.span`
+  self-start
+  font-sanchez
+  text-goldDeep
+  text-[10px]
+  font-medium
+  tracking-[0.18em]
+  uppercase
+  border
+  border-goldDeep
+  rounded-full
+  px-3
+  py-1
+  -mb-2
+`;
+
+const RequestNote = tw.p`
+  font-sanchez
+  text-primary/50
+  text-xs
+  leading-relaxed
+  -mt-2
 `;
 
 const Summary = tw.div`

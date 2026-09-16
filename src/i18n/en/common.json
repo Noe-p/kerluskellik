@@ -101,7 +101,7 @@
   "tarifs": {
     "title": "Pricing",
     "infoTitle": "Information",
-    "summer": { "label": "July / August week", "value": "€1,400 incl. tax" },
+    "summer": { "label": "July / August week", "value": "€1,450 incl. tax" },
     "beforeSummer": {
       "label": "June / September week + school holidays",
       "value": "€1,050 incl. tax"
@@ -111,20 +111,25 @@
   },
   "disponibilites": {
     "title": "Availability",
-    "hook": "Select your check-in and check-out dates to send a booking request.",
-    "legend": { "booked": "Booked", "selected": "Selected", "free": "Available" },
+    "hook": "Stays are booked by the full week, Saturday to Saturday (one week or more). Choose your dates to send us a booking request.",
+    "legend": {
+      "booked": "Booked",
+      "selected": "Selected",
+      "free": "Available"
+    },
     "prevMonth": "Previous month",
     "nextMonth": "Next month",
     "unavailable": "The calendar is currently unavailable, please try again later.",
-    "overlapWarning": "This period overlaps an existing booking. Please choose a different departure date.",
-    "selectStart": "Choose your check-in date",
-    "selectEnd": "Choose your check-out date",
+    "selectStart": "Choose your check-in Saturday",
+    "selectEnd": "Choose your check-out Saturday (1 week minimum)",
     "cancelSelection": "Cancel",
     "form": {
+      "requestBadge": "Booking request",
+      "requestNote": "This is a request, not a confirmed booking: we'll get back to you shortly to confirm availability.",
       "dateRange": "{{start}} to {{end}}",
+      "weeks_one": "{{count}} full week · Saturday to Saturday",
+      "weeks_other": "{{count}} full weeks · Saturday to Saturday",
       "changeDates": "Change dates",
-      "nights_one": "{{count}} night",
-      "nights_other": "{{count}} nights",
       "name": "Name",
       "email": "Email",
       "phone": "Phone (optional)",

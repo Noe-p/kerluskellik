@@ -101,7 +101,7 @@
   "tarifs": {
     "title": "Tarifs",
     "infoTitle": "Informations",
-    "summer": { "label": "Semaine Juillet / Août", "value": "1400 € TTC" },
+    "summer": { "label": "Semaine Juillet / Août", "value": "1450 € TTC" },
     "beforeSummer": {
       "label": "Semaine Juin / Septembre + vacances scolaires",
       "value": "1050 € TTC"
@@ -111,20 +111,25 @@
   },
   "disponibilites": {
     "title": "Disponibilités",
-    "hook": "Sélectionnez vos dates d'arrivée et de départ pour envoyer une demande de réservation.",
-    "legend": { "booked": "Réservé", "selected": "Sélectionné", "free": "Libre" },
+    "hook": "Nos séjours se réservent à la semaine complète, du samedi au samedi (une ou plusieurs semaines). Choisissez vos dates pour nous envoyer une demande de réservation.",
+    "legend": {
+      "booked": "Réservé",
+      "selected": "Sélectionné",
+      "free": "Libre"
+    },
     "prevMonth": "Mois précédent",
     "nextMonth": "Mois suivant",
     "unavailable": "Le calendrier n'est pas disponible pour le moment, merci de réessayer plus tard.",
-    "overlapWarning": "Cette période chevauche une réservation existante. Choisissez une autre date de départ.",
-    "selectStart": "Choisissez votre date d'arrivée",
-    "selectEnd": "Choisissez votre date de départ",
+    "selectStart": "Choisissez votre samedi d'arrivée",
+    "selectEnd": "Choisissez votre samedi de départ (1 semaine minimum)",
     "cancelSelection": "Annuler",
     "form": {
+      "requestBadge": "Demande de réservation",
+      "requestNote": "Ceci est une demande, pas une réservation confirmée : nous revenons vers vous rapidement pour valider la disponibilité.",
       "dateRange": "Du {{start}} au {{end}}",
+      "weeks_one": "{{count}} semaine complète · samedi à samedi",
+      "weeks_other": "{{count}} semaines complètes · samedi à samedi",
       "changeDates": "Modifier les dates",
-      "nights_one": "{{count}} nuit",
-      "nights_other": "{{count}} nuits",
       "name": "Nom",
       "email": "Email",
       "phone": "Téléphone (optionnel)",
