@@ -24,7 +24,6 @@ class MyDocument extends Document<MyDocumentProps> {
     return (
       <Html lang={this.props.locale}>
         <Head>
-          <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
           <link rel="icon" href="/favicon.png" type="image/png" />
           <link rel="apple-touch-icon" href="/favicon.png" />
         </Head>
